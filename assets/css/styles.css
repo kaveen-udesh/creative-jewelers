@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: Century Gothic Regular;
+}
+
+.navbar {
+  overflow: visible;
+  background-color: white;
+}
+
+.nav-link {
+  color: black;
+}
+
+
+.nav a:hover {
+  color: #00dda8;
+}
+
+.dropdown-item:active {
+  color: #00dda8;
+  background-color: transparent;
+}
+
+.nav-pills .show > .nav-link {
+  background-color: transparent;
+  color: #00dda8;
+}
+
+.modal-backdrop {
+  position: static;
+}
+
+#btnCart:hover {
+  color: #00dda8;
+}
+
+#btn1 {
+    border-color:#00dda8;
+    color:#00dda8;
+}
+
+#btn1:hover {
+    background-color:#00dda8;
+    color:white;
+}
+
+#btn2 {
+    background-color:#00dda8;
+    color:white;
+}
+
+#btn2:hover {
+    background-color:#00dda8;
+    color:black;
+}
+
+.img1 {
+    transition-duration: 0.5s;
+	padding: 10px;
+}
+
+.img1:hover {
+    padding: 0px;
+}
+
+#footer {
+  color: #cccccc;
+  line-height: 40%;
+  padding-top: 30px;
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  font-size: 14px;
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
+.col-xl-12 {
+  padding: 0px;
+}
