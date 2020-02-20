@@ -14,7 +14,7 @@
             <p>info@dreampark.lk</p>
         </div>
         <div class="col-4">
-            <img src="assets/images/footertime.png" alt="timelogo">
+            <!-- <img src="assets/images/footertime.png" alt="timelogo"> -->
             <br /><br /><br /><br /><br />
             <p>Open Hours</p>
             <p>9.00 AM - 9.00 PM</p>
