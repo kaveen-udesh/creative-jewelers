@@ -1,58 +1,129 @@
 <?php include('layout/header.php') ?>
 
-<div style="padding-top:76px;" align="center" ;>
-    <div class="container" style="padding-top: 50px; padding-bottom: 80px;">
+<?php
+
+$server = "localhost";
+$user = "root";
+$pass = "";
+$database = "creative_jewelers_kaveen";
+$msg="";
+$attempts="";
+
+// Create Connection
+
+$con = mysqli_connect($server,$user,$pass,$database);
+
+if(isset($_POST['btnRegister'])){
+ 
+    $fname = $_POST['txtFname'];
+    $lname = $_POST['txtLname'];
+    $address = $_POST['txtAddress'];
+    $city = $_POST['txtCity'];
+    $zip = $_POST['txtZipCode'];
+    $country = $_POST['txtCountry'];
+    $birthday = $_POST['txtBirthday'];
+    $email = $_POST['txtEmail'];
+    $pass = $_POST['txtPassword'];
+        $sql = "INSERT INTO users (f_name, l_name, address, city, zip_code, country, birthday, email, password) VALUES ('".$fname."','".$lname."','".$address."','".$city."',".$zip.",'".$country."','".$birthday."','".$email."','".$pass."')";
+        
+        if(mysqli_query($con,$sql)){
+            echo '<script type="text/javascript">alert("You are now Registered Member!\n Welcome to the Creative Jewelers")</script>';
+            ?>
+<script type="text/javascript">
+window.location.href = "index.php";
+</script>
+<?php
+        }
+        else{
+            $msg = "<div style=color:red;><b>Error :".mysqli_error($con)."<b></div>";
+        }
+}
+
+?>
+
+<div style="padding-top:76px;">
+    <div class="container" style="padding-top: 30px; padding-bottom: 80px;">
         <div class="row">
 
-            <div class="col">
-                <h1 style="color:#00dda8; padding-top: 15px; padding-bottom: 30px;"><b>USER REGISTRATIONS</b></h1>
-                <form class="needs-validation" novalidate action="index.html">
-                    <div class="form-row col-xl-10">
-                        <div class="form-group">
-                            <input id="txtFname" type="text" class="form-control" placeholder="First name" required>
+            <div class="col" style="margin:30px;" align="left">
+                <h1 style="color:#00dda8; padding-bottom: 30px; text-align:center;"><b>USER REGISTRATIONS</b></h1>
+                <form class="validation" novalidate action="register.php" method="post">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label><b>First name :</b></label>
+                            <input name="txtFname" type="text" class="form-control" required>
                         </div>
-                        <div class="form-group" style="margin-left:17px;">
-                            <input id="txtLname" type="text" class="form-control" placeholder="Last name" required>
+                        <div class="form-group col">
+                            <label><b>Last name :</b></label>
+                            <input name="txtLname" type="text" class="form-control" required>
                         </div>
                     </div>
-                    <div class="form-group col-xl-10">
-                        <input id="txtAddress" type="text" class="form-control" placeholder="Street Address" required>
+                    <div class="form-group">
+                        <label><b>Street Address :</b></label>
+                        <input name="txtAddress" type="text" class="form-control" required>
                     </div>
-                    <div class="form-group col-xl-10">
-                        <input id="txtCity" type="text" class="form-control" placeholder="City" required>
+                    <div class="form-group">
+                        <label><b>City :</b></label>
+                        <input name="txtCity" type="text" class="form-control" required>
                     </div>
-                    <div class="form-row col-xl-10">
-                        <div class="form-group">
-                            <input id="txtZipCode" type="number" min="0" class="form-control" placeholder="Zip Code" required>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label><b>Zip Code :</b></label>
+                            <input name="txtZipCode" type="number" min="0" class="form-control" required>
                         </div>
-                        <div class="form-group" style="margin-left:17px;">
-                            <input id="txtCountry" type="text" class="form-control" placeholder="Country" required>
+                        <div class="form-group col">
+                            <label><b>Country :</b></label>
+                            <input name="txtCountry" type="text" class="form-control" required>
                         </div>
                     </div>
 
-                    <div class="form-group col-xl-10" align="left">
+                    <div class="form-group">
                         <label><b>Birthday :</b></label>
-                        <input id="Date" type="date" class="form-control" placeholder="Birthday" required>
+                        <input name="txtBirthday" type="date" class="form-control" required>
                     </div>
-                    <div class="form-group col-xl-10">
-                        <input id="txtEmail" type="email" class="form-control" placeholder="Email" required>
+                    <div class="form-group">
+                        <label><b>Email :</b></label>
+                        <input name="txtEmail" type="email" class="form-control" required>
                     </div>
-                    <div class="form-group col-xl-10">
-                        <input id="txtPassword" type="password" class="form-control" placeholder="Password" required>
+                    <div class="form-group">
+                        <label><b>Password :</b></label>
+                        <input name="txtPassword" type="password" class="form-control" required>
                     </div><br />
-                    <button type="submit" id="btn2" class="btn"><i class="fas fa-user-plus"
-                            style="padding-right: 10px;"></i>REGISTER</button>
-
+                    <div align="center">
+                        <button type="submit" id="btn2" class="btn" name="btnRegister"><i class="fas fa-user-plus"
+                                style="padding-right: 10px;"></i>REGISTER</button>
+                    </div>
                 </form>
-
+                <?php echo $msg; ?>
 
             </div>
-            <div class="col">
+            <div class="col" style="margin-left:50px; margin-top:100px;">
                 <img src="assets/images/img5.png" />
             </div>
         </div>
     </div>
 
 </div>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+</script>
 
 <?php include('layout/footer.php') ?>

@@ -1,6 +1,5 @@
 <?php include('layout/header.php') ?>
 
-
 <div style="padding-top:76px;" align="center" ;>
     <div id="Slideshow" class="carousel slide offset-xl-0 col-xl-12" data-ride="carousel" data-interval="2000">
         <ol class="carousel-indicators">
@@ -58,7 +57,7 @@
         </div>
     </div>
 
-    <div style="background-color:#dde0df;">
+    <div style="background-color:#f2f2f2;">
         <h1 style="padding-top: 30px; padding-bottom: 30px;"><b>PRODUCTS CATEGORIES</b></h1>
 
         <div class="row no-gutters">
@@ -66,19 +65,19 @@
                 <a href="#"><img class="img1" src="assets/images/ladies.jpg"/></a><br/><br/>
                 <h3>LADIES</h3>
                 <p>A selection of jewellery inspired by the latest international lady's fashion, includes necklaces, earrings, rings, pendants, bracelets and chains.</p>
-                <button type="button" id="btn2" class="btn">View Ladies Jewellery</button>
+                <button type="button" id="btn2" class="btn">View More</button>
             </div>
             <div class="col-sm" style="padding:25px;">
             <a href="#"><img class="img1" src="assets/images/gents.jpg"/></a><br/><br/>
                 <h3>GENTS</h3>
                 <p>A selection of jewellery inspired by the latest international men’s fashion, includes cuff links, rings, tie pins, bracelets and chains.</p>
-                <button type="button" id="btn2" class="btn">View Gents Jewellery</button>
+                <button type="button" id="btn2" class="btn">View More</button>
             </div>
             <div class="col-sm" style="padding:25px;">
             <a href="#"><img class="img1" src="assets/images/kids.jpg"/></a><br/><br/>
                 <h3>KIDS</h3>
                 <p>A range of precious items for your precious little one. Our kids item range includes kids bangles, chains, crosses, earrings and much more.</p>
-                <button type="button" id="btn2" class="btn">View Kids Jewellery</button>
+                <button type="button" id="btn2" class="btn">View More</button>
             </div>
         </div>
 
@@ -103,9 +102,6 @@
                         style="margin: 15px;"></a>
         </div>
     </div>
-
-
-
 
 
 </div>

@@ -5,15 +5,24 @@ body {
 
 .navbar {
   overflow: visible;
-  background-color: white;
+  background-color: #f2f2f2;
 }
 
 .nav-link {
   color: black;
 }
 
+.nav-pills .nav-link.active {
+  color: #fff;
+  background-color: #00dda8;
+}
+
 
 .nav a:hover {
+  color: #00dda8;
+}
+
+.navbar a:hover {
   color: #00dda8;
 }
 
@@ -25,11 +34,6 @@ body {
 .nav-pills .show > .nav-link {
   background-color: transparent;
   color: #00dda8;
-}
-
-.nav-pills .nav-link.active {
-  color: #fff;
-  background-color: #00dda8;
 }
 
 .modal-backdrop {

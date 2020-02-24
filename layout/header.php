@@ -49,7 +49,7 @@
                                                 data-hover="dropdown" href="#" role="button" aria-haspopup="true"
                                                 aria-expanded="false"><b>JEWELLERY</b></a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">NECKLACES</a>
+                                                <a class="dropdown-item" href="jewellery.php">NECKLACES</a>
                                                 <a class="dropdown-item" href="#">BRACELETS</a>
                                                 <a class="dropdown-item" href="#">RINGS</a>
                                                 <a class="dropdown-item" href="#">EARRINGS</a>
