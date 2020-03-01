@@ -8,6 +8,10 @@ body {
   background-color: white;
 }
 
+#navbar{
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
 .nav-link {
   color: black;
 }
@@ -16,6 +20,7 @@ body {
 .nav a:hover {
   color: #00dda8;
 }
+
 
 .dropdown-item:active {
   color: #00dda8;
@@ -34,6 +39,31 @@ body {
 
 .modal-backdrop {
   position: static;
+}
+
+
+.Cart{
+  color: white;
+  text-decoration: none;
+  padding-top: 5px;
+  padding-right: 15px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.Cart .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
+
+#btnCart{
+  padding: 0px;
 }
 
 #btnCart:hover {
@@ -61,11 +91,22 @@ body {
 }
 
 .img1 {
-    transition-duration: 0.5s;
-	padding: 10px;
+  transition-duration: 0.5s;
+  padding: 10px;
 }
 
 .img1:hover {
+    padding: 0px;
+}
+
+.img2 {
+  transition-duration: 0.5s;
+  padding: 5px;
+  width: auto;
+  height: 60px;
+}
+
+.img2:hover {
     padding: 0px;
 }
 
@@ -84,4 +125,34 @@ body {
 
 .col-xl-12 {
   padding: 0px;
+}
+
+.product{
+  transition-duration: 0.5s;
+  padding: 10px;
+  height: 250px;
+  width: auto;
+}
+
+.product:hover {
+  padding: 0px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: black;
+}
+
+.contact{
+  width: 55px;
+  height: auto;
+  padding: 3px;
+  transition-duration: 0.2s;
+}
+
+.contact:hover {
+  padding: 0px;
+}
+
+.modal-open .modal {
+  background-color: rgba(0, 0, 0, 0.5);
 }

@@ -19,15 +19,21 @@ if(isset($_POST['btnLogin'])){
 	$sql = "SELECT * FROM users WHERE email='".$email."' && password='".$pass."'";
 	$result = mysqli_query($con,$sql);
 	if(mysqli_num_rows($result)>0){
+        
+        $_SESSION["email"] = $email;
 		echo '<script type="text/javascript">alert("You are Login Successfully")</script>';
 	?>
         <script type="text/javascript">
 		window.location.href="index.php";</script>
      <?php
-	}else{
-    $msg = "<label style=color:red;>Invalid Email or Password </label> ";
-  }
+	}else{ 
+        $msg = "<div class='alert alert-danger' role=alert>
+                    Invalid Email or Password
+                </div>";
+    }
 }
+
+
 
 ?>	
 
@@ -57,27 +63,5 @@ if(isset($_POST['btnLogin'])){
     </div>
 
 </div>
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-}
-)();
-</script>
 
 <?php include('layout/footer.php') ?>

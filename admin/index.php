@@ -3,35 +3,31 @@
     <div class="row no-gutters">
         <div class="col-2" style="background-color:#f2f2f2; padding-top:50px;">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-                    aria-controls="v-pills-home" aria-selected="true">Home</a>
-                <a class="nav-link" id="v-pills-customers-tab" data-toggle="pill" href="#v-pills-customers" role="tab"
-                    aria-controls="v-pills-customers" aria-selected="false">Customers</a>
-                <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab"
-                    aria-controls="v-pills-products" aria-selected="false">Products</a>
-                <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab"
-                    aria-controls="v-pills-orders" aria-selected="false">Orders</a>
-                <a class="nav-link" id="v-pills-inquiries-tab" data-toggle="pill" href="#v-pills-inquiries" role="tab"
-                    aria-controls="v-pills-inquiries" aria-selected="false">Inquiries</a>
+                <a class="nav-link" href="index.php?page=home" role="tab">Home</a>
+
+                <li class="nav-item dropdown dropright">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" role="tab">Products</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="index.php?page=manage_products">Manage Products</a>
+                        <a class="dropdown-item" href="index.php?page=all_products">View all Products</a>
+                    </div>
+                </li>
+                <a class="nav-link" href="index.php?page=customers">Customers</a>
+                <a class="nav-link" href="index.php?page=orders">Orders</a>
+                <a class="nav-link" href="index.php?page=inquiries">Inquiries</a>
             </div>
         </div>
+
         <div class="col-10">
-            <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                    aria-labelledby="v-pills-home-tab">
-                    <?php include('product.php') ?></div>
-                <div class="tab-pane fade" id="v-pills-customers" role="tabpanel"
-                    aria-labelledby="v-pills-customers-tab"><?php include('customers.php') ?>
-                </div>
-                <div class="tab-pane fade" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-products-tab">
-                    <?php include('product.php') ?>
-                </div>
-                <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">d
-                </div>
-                <div class="tab-pane fade" id="v-pills-inquiries" role="tabpanel"
-                    aria-labelledby="v-pills-inquiries-tab">...
-                </div>
-            </div>
+        <?php
+        if(isset($_GET['page'])){
+            $pageName = $_GET['page'];
+            include($pageName.'.php');
+        }
+        else{
+            include('ladies_jewellery.php');
+        }
+        ?>
         </div>
     </div>
 </div>

@@ -27,12 +27,13 @@ if(isset($_POST['btnRegister'])){
         $sql = "INSERT INTO users (f_name, l_name, address, city, zip_code, country, birthday, email, password) VALUES ('".$fname."','".$lname."','".$address."','".$city."',".$zip.",'".$country."','".$birthday."','".$email."','".$pass."')";
         
         if(mysqli_query($con,$sql)){
+            $_SESSION["email"] = $email;
             echo '<script type="text/javascript">alert("You are now Registered Member!\n Welcome to the Creative Jewelers")</script>';
             ?>
-<script type="text/javascript">
-window.location.href = "index.php";
-</script>
-<?php
+            <script type="text/javascript">
+            window.location.href = "index.php";
+            </script>
+            <?php
         }
         else{
             $msg = "<div style=color:red;><b>Error :".mysqli_error($con)."<b></div>";
@@ -104,26 +105,5 @@ window.location.href = "index.php";
     </div>
 
 </div>
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
-})();
-</script>
 
 <?php include('layout/footer.php') ?>

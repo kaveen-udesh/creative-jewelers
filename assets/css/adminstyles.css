@@ -19,7 +19,8 @@ body {
 
 
 .nav a:hover {
-  color: #00dda8;
+  background-color: #00dda8;
+    color: white;
 }
 
 .navbar a:hover {

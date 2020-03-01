@@ -1,28 +1,30 @@
 <?php
 
-$server = "localhost";
-$user = "root";
-$pass ="";
-$database = "creative_jewelers_kaveen";
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $database = "creative_jewelers_kaveen";
 
-$con = mysqli_connect($server,$user,$pass,$database);
-//-------------- Connection--------
-$id="";
-$name="";
-$category="";
-$sub_category="";
-$material="";
-$weight="";
-$price="";
-$image="";
-$msg="";
-$sql="";
-$arrType=array("jpg","jpeg","png");
+    $con = mysqli_connect($server, $user, $pass, $database);
+
+    /** ---------------- Connection ---------------- */
+
+    $id="";
+    $name="";
+    $category="";
+    $sub_category="";
+    $material="";
+    $weight="";
+    $price="";
+    $image="";
+    $msg="";
+    $sql="";
+    $arrType=array("jpg","jpeg","png","PNG");
 
 if($con){
  
  if(isset($_POST['btnInsert'])){
-	 $image=$_FILES['imageUpload']['name'];
+    $image=$_FILES['imageUpload']['name'];
    
    if(!empty($image)){
 	 $id= $_POST['txtID'];
@@ -54,14 +56,6 @@ if($con){
 	  $msg="<div style=color:red;><b>Please Select an Image</b></div>"; 
    }
  }
-	
-	// -------- CLEAR ------------
-	if(isset($_POST['btnClear'])){
-		clear();
-	}
-	//----------------------------
-	
-	
 	
 //------------------- Delete ------------------------
 	
@@ -125,24 +119,36 @@ if($con){
  
 if(isset($_POST['btnSearch'])){
     $id= $_POST['txtID'];
-   $sql="SELECT * FROM products WHERE p_id=".$id;
-   $result = mysqli_query($con,$sql);
+    if(!empty($id)){
+    
+        $sql="SELECT * FROM products WHERE p_id=".$id;
+        $result = mysqli_query($con,$sql);
 		if(mysqli_num_rows($result)>0){
 
-       while($row = mysqli_fetch_row($result)){
-           $name =$row[1];
-           $category =$row[2];
-           $sub_category =$row[3];
-           $material =$row[4];
-           $weight =$row[5];
-           $price =$row[6];
-           $image = $row[7];
-           $image = "<img src='../assets/images/".$image."' width=150 height=150/>";
-       }
-   }else{
-    $msg="<div style=color:red;><b>Error :".mysqli_error($con)."</b></div>";
+            while($row = mysqli_fetch_row($result)){
+                $name =$row[1];
+                $category =$row[2];
+                $sub_category =$row[3];
+                $material =$row[4];
+                $weight =$row[5];
+                $price =$row[6];
+                $image = $row[7];
+                $image = "<img src='../assets/images/".$image."' width=150 height=150/>";
+            }
+        }
+        else{
+            $msg="<div style=color:red;><b>Error :".mysqli_error($con)."</b></div>";
+        }
+
+    }else{
+        $msg="<div style=color:red;><b>Please Enter Product ID</b></div>"; 
+    }
 }
-}
+
+
+
+
+
 }else{
    $msg="<div style=color:red;><b>Error :".mysqli_connect_error()."</b></div>";
 }
@@ -192,6 +198,7 @@ if(isset($_POST['btnSearch'])){
                         <option <?php if ($sub_category == 'Rings') {echo 'selected';}?>>Rings</option>
                         <option <?php if ($sub_category == 'Earrings') {echo 'selected';}?>>Earrings</option>
                         <option <?php if ($sub_category == 'Chains') {echo 'selected';}?>>Chains</option>
+                        <option <?php if ($sub_category == 'Pendants') {echo 'selected';}?>>Pendants</option>
                     </select></td>
             </tr>
 
@@ -233,6 +240,7 @@ if(isset($_POST['btnSearch'])){
                 style="padding-right: 10px;"></i>Delete</button>
         <button type="submit" class="btn btn-info" name="btnSearch"><i class="fas fa-search"
                 style="padding-right: 10px;"></i>Search</button>
+        <button type="submit" class="btn btn-outline-danger" name="btnClear"><i class="fas fa-broom"></i>Clear</button>
         <br /><br />
         <?php echo $msg;?>
     </form><br />

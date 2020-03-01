@@ -9,6 +9,8 @@ $con = mysqli_connect($server,$user,$pass,$database);
 //-------------- Connection--------
 $sql="";
 
+
+
 ?>
 
 <div class="container-fluid">
@@ -25,6 +27,8 @@ $sql="";
                     aria-controls="v-pills-earrings" aria-selected="false">EARRINGS</a>
                 <a class="nav-link" id="v-pills-chains-tab" data-toggle="pill" href="#v-pills-chains" role="tab"
                     aria-controls="v-pills-chains" aria-selected="false">CHAINS</a>
+                <a class="nav-link" id="v-pills-pendants-tab" data-toggle="pill" href="#v-pills-pendants" role="tab"
+                    aria-controls="v-pills-pendants" aria-selected="false">PENDANTS</a>
             </div>
         </div>
         <div class="col-10">
@@ -46,25 +50,31 @@ $sql="";
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
                                 echo "<div class=row>";
-                                $r=1;
-                                $crl="";
-                                while($row = mysqli_fetch_row($result)){
-                                    if($r%2==0){
-                                        $crl="#efefef";
-                                    }
-                                    else{
-                                        $crl="#d9d9d9";
-                                    }
-                                    echo " 
-                                        <div class=col-sm style=padding:50px;>
-                                        <p><img src='assets/images/".$row[7]."' width=200 height=200/></p>
-                                        <p><b>"."  ".$row[1]."</b></p>
-                                        <p>"." Material : ".$row[4]."</p>
-                                        <p>"." Weight : ".$row[5]."g</p>
-                                        <p>"."  Rs.".$row[6]."</p>
-                                        <p><button class=btn id=btn2>Add to Cart</button></p>
-                                        </div>";
-                                        $r++;
+
+                                while($row = mysqli_fetch_assoc($result)){
+
+                                    ?>
+                                    <div class="col-sm" style="padding:50px;">
+                                        <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                                            <img class="product" src="assets/images/<?php echo $row['image'] ?>" /><input
+                                                type='hidden' name='image' value="<?php echo $row['image'];?>" />
+                                            <h5 style="padding-top:20px;"><b><?php echo $row['p_name'];?></b><input type='hidden'
+                                                    name='txtName' value="<?php echo $row['p_name'];?>" /></h5>
+                                            <div>Material :<?php echo $row['material'];?><input type='hidden' name='txtMaterial'
+                                                    value="<?php echo $row['material'];?>" /> </div>
+                                            <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
+                                                    value="<?php echo $row['weight'];?>" />g</div>
+                                            <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                                    name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                            <div class="col-md-5" style=padding-bottom:20px;>
+                                                <label>Quantity</label>
+                                                <input class="form-control" type="number" min="1" name="txtQty" required>
+                                            </div>
+                                            <input type="submit" class="btn" id="btn2" name="btnAdd" value="Add to Cart" />
+                                        </form>
+                                    </div>
+                                    <?php
+
                                 }
                                 echo "</div>";
                                 echo "</div>";
@@ -73,6 +83,7 @@ $sql="";
                                 echo "<div style=color:red;><b>Not Found</b></div>";
                             }
                             ?>
+
                     </div>
 
                 </div>
@@ -93,25 +104,32 @@ $sql="";
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
                                 echo "<div class=row>";
-                                $r=1;
-                                $crl="";
-                                while($row = mysqli_fetch_row($result)){
-                                    if($r%2==0){
-                                        $crl="#efefef";
-                                    }
-                                    else{
-                                        $crl="#d9d9d9";
-                                    }
-                                    echo " 
-                                        <div class=col-sm style=padding:50px;>
-                                        <p><img src='assets/images/".$row[7]."' width=200 height=200/></p>
-                                        <p><b>"."  ".$row[1]."</b></p>
-                                        <p>"." Material : ".$row[4]."</p>
-                                        <p>"." Weight : ".$row[5]."g</p>
-                                        <p>"."  Rs.".$row[6]."</p>
-                                        <p><button class=btn id=btn2>Add to Cart</button></p>
-                                        </div>";
-                                        $r++;
+
+                                while($row = mysqli_fetch_assoc($result)){
+
+                                    ?>
+                        <div class="col-sm" style="padding:50px;">
+                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                                <img class="product" src="assets/images/<?php echo $row['image'] ?>" /><input 
+                                type='hidden' name='image'
+                                    value="<?php echo $row['image'];?>" />
+                                <h5 style="padding-top:20px;"><b><?php echo $row['p_name'];?></b><input type='hidden'
+                                        name='txtName' value="<?php echo $row['p_name'];?>" /></h5>
+                                <div>Material :<?php echo $row['material'];?><input type='hidden' name='txtMaterial'
+                                        value="<?php echo $row['material'];?>" /> </div>
+                                <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
+                                        value="<?php echo $row['weight'];?>" />g</div>
+                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                        name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                <div class="col-md-5" style=padding-bottom:20px;>
+                                    <label>Quantity</label>
+                                    <input class="form-control" type="number" min="1" name="txtQty" required>
+                                </div>
+                                <input type="submit" class="btn" id="btn2" name="btnAdd" value="Add to Cart" />
+                            </form>
+                        </div>
+                        <?php
+
                                 }
                                 echo "</div>";
                                 echo "</div>";
@@ -124,7 +142,7 @@ $sql="";
 
                 </div>
                 <div class="tab-pane fade" id="v-pills-rings" role="tabpanel" aria-labelledby="v-pills-rings-tab">
-                    
+
                     <!-- -------------- Rings ---------------- -->
 
                     <div align="center" class="container" style="padding-top:50px;">
@@ -139,25 +157,32 @@ $sql="";
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
                                 echo "<div class=row>";
-                                $r=1;
-                                $crl="";
-                                while($row = mysqli_fetch_row($result)){
-                                    if($r%2==0){
-                                        $crl="#efefef";
-                                    }
-                                    else{
-                                        $crl="#d9d9d9";
-                                    }
-                                    echo " 
-                                        <div class=col-sm style=padding:50px;>
-                                        <p><img src='assets/images/".$row[7]."' width=200 height=200/></p>
-                                        <p><b>"."  ".$row[1]."</b></p>
-                                        <p>"." Material : ".$row[4]."</p>
-                                        <p>"." Weight : ".$row[5]."g</p>
-                                        <p>"."  Rs.".$row[6]."</p>
-                                        <p><button class=btn id=btn2>Add to Cart</button></p>
-                                        </div>";
-                                        $r++;
+
+                                while($row = mysqli_fetch_assoc($result)){
+
+                                    ?>
+                        <div class="col-sm" style="padding:50px;">
+                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                                <img class="product" src="assets/images/<?php echo $row['image'] ?>" width=200
+                                    height=200 /><input type='hidden' name='image'
+                                    value="<?php echo $row['image'];?>" />
+                                <h5 style="padding-top:20px;"><b><?php echo $row['p_name'];?></b><input type='hidden'
+                                        name='txtName' value="<?php echo $row['p_name'];?>" /></h5>
+                                <div>Material :<?php echo $row['material'];?><input type='hidden' name='txtMaterial'
+                                        value="<?php echo $row['material'];?>" /> </div>
+                                <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
+                                        value="<?php echo $row['weight'];?>" />g</div>
+                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                        name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                <div class="col-md-5" style=padding-bottom:20px;>
+                                    <label>Quantity</label>
+                                    <input class="form-control" type="number" min="1" name="txtQty" required>
+                                </div>
+                                <input type="submit" class="btn" id="btn2" name="btnAdd" value="Add to Cart" />
+                            </form>
+                        </div>
+                        <?php
+
                                 }
                                 echo "</div>";
                                 echo "</div>";
@@ -167,10 +192,10 @@ $sql="";
                             }
                             ?>
                     </div>
-                    
+
                 </div>
                 <div class="tab-pane fade" id="v-pills-earrings" role="tabpanel" aria-labelledby="v-pills-earrings-tab">
-                    
+
                     <!-- -------------- Earrings ---------------- -->
 
                     <div align="center" class="container" style="padding-top:50px;">
@@ -185,25 +210,32 @@ $sql="";
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
                                 echo "<div class=row>";
-                                $r=1;
-                                $crl="";
-                                while($row = mysqli_fetch_row($result)){
-                                    if($r%2==0){
-                                        $crl="#efefef";
-                                    }
-                                    else{
-                                        $crl="#d9d9d9";
-                                    }
-                                    echo " 
-                                        <div class=col-sm style=padding:50px;>
-                                        <p><img src='assets/images/".$row[7]."' width=200 height=200/></p>
-                                        <p><b>"."  ".$row[1]."</b></p>
-                                        <p>"." Material : ".$row[4]."</p>
-                                        <p>"." Weight : ".$row[5]."g</p>
-                                        <p>"."  Rs.".$row[6]."</p>
-                                        <p><button class=btn id=btn2>Add to Cart</button></p>
-                                        </div>";
-                                        $r++;
+
+                                while($row = mysqli_fetch_assoc($result)){
+
+                                    ?>
+                        <div class="col-sm" style="padding:50px;">
+                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                                <img class="product" src="assets/images/<?php echo $row['image'] ?>" width=200
+                                    height=200 /><input type='hidden' name='image'
+                                    value="<?php echo $row['image'];?>" />
+                                <h5 style="padding-top:20px;"><b><?php echo $row['p_name'];?></b><input type='hidden'
+                                        name='txtName' value="<?php echo $row['p_name'];?>" /></h5>
+                                <div>Material :<?php echo $row['material'];?><input type='hidden' name='txtMaterial'
+                                        value="<?php echo $row['material'];?>" /> </div>
+                                <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
+                                        value="<?php echo $row['weight'];?>" />g</div>
+                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                        name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                <div class="col-md-5" style=padding-bottom:20px;>
+                                    <label>Quantity</label>
+                                    <input class="form-control" type="number" min="1" name="txtQty" required>
+                                </div>
+                                <input type="submit" class="btn" id="btn2" name="btnAdd" value="Add to Cart" />
+                            </form>
+                        </div>
+                        <?php
+
                                 }
                                 echo "</div>";
                                 echo "</div>";
@@ -215,7 +247,7 @@ $sql="";
                     </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-chains" role="tabpanel" aria-labelledby="v-pills-chains-tab">
-                    
+
                     <!-- -------------- Chains ---------------- -->
 
                     <div align="center" class="container" style="padding-top:50px;">
@@ -230,25 +262,85 @@ $sql="";
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
                                 echo "<div class=row>";
-                                $r=1;
-                                $crl="";
-                                while($row = mysqli_fetch_row($result)){
-                                    if($r%2==0){
-                                        $crl="#efefef";
-                                    }
-                                    else{
-                                        $crl="#d9d9d9";
-                                    }
-                                    echo " 
-                                        <div class=col-sm style=padding:50px;>
-                                        <p><img src='assets/images/".$row[7]."' width=200 height=200/></p>
-                                        <p><b>"."  ".$row[1]."</b></p>
-                                        <p>"." Material : ".$row[4]."</p>
-                                        <p>"." Weight : ".$row[5]."g</p>
-                                        <p>"."  Rs.".$row[6]."</p>
-                                        <p><button class=btn id=btn2>Add to Cart</button></p>
-                                        </div>";
-                                        $r++;
+
+                                while($row = mysqli_fetch_assoc($result)){
+
+                                    ?>
+                        <div class="col-sm" style="padding:50px;">
+                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                                <img class="product" src="assets/images/<?php echo $row['image'] ?>" width=200
+                                    height=200 /><input type='hidden' name='image'
+                                    value="<?php echo $row['image'];?>" />
+                                <h5 style="padding-top:20px;"><b><?php echo $row['p_name'];?></b><input type='hidden'
+                                        name='txtName' value="<?php echo $row['p_name'];?>" /></h5>
+                                <div>Material :<?php echo $row['material'];?><input type='hidden' name='txtMaterial'
+                                        value="<?php echo $row['material'];?>" /> </div>
+                                <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
+                                        value="<?php echo $row['weight'];?>" />g</div>
+                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                        name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                <div class="col-md-5" style=padding-bottom:20px;>
+                                    <label>Quantity</label>
+                                    <input class="form-control" type="number" min="1" name="txtQty" required>
+                                </div>
+                                <input type="submit" class="btn" id="btn2" name="btnAdd" value="Add to Cart" />
+                            </form>
+                        </div>
+                        <?php
+
+                                }
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                            else{
+                                echo "<div style=color:red;><b>Not Found</b></div>";
+                            }
+                            ?>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-pendants" role="tabpanel" aria-labelledby="v-pills-pendants-tab">
+
+                    <!-- -------------- Pendants ---------------- -->
+
+                    <div align="center" class="container" style="padding-top:50px;">
+                        <div class="alert alert-success" role="alert">
+                            <h1>LADIES JEWELLERY</h1>
+                            <h3>PENDANTS</h3>
+                        </div>
+
+                        <?php
+                            $sql = "SELECT * FROM products WHERE category='Ladies' && sub_category='Pendants'";
+                            $result = mysqli_query($con,$sql);
+                            if(mysqli_num_rows($result)>0){
+                                echo "<div class=container>";
+                                echo "<div class=row>";
+
+                                while($row = mysqli_fetch_assoc($result)){
+
+                                    ?>
+                        <div class="col-sm" style="padding:50px;">
+                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                                <img class="product" src="assets/images/<?php echo $row['image'] ?>" width=200
+                                    height=200 /><input type='hidden' name='image'
+                                    value="<?php echo $row['image'];?>" />
+                                <h5 style="padding-top:20px;"><b><?php echo $row['p_name'];?></b><input type='hidden'
+                                        name='txtName' value="<?php echo $row['p_name'];?>" /></h5>
+                                <div>Material :<?php echo $row['material'];?><input type='hidden' name='txtMaterial'
+                                        value="<?php echo $row['material'];?>" /> </div>
+                                <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
+                                        value="<?php echo $row['weight'];?>" />g</div>
+                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                        name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                <div class="col-md-5" style=padding-bottom:20px;>
+                                    <label>Quantity</label>
+                                    <input class="form-control" type="number" min="1" name="txtQty" required>
+                                </div>
+                                <input type="submit" class="btn" id="btn2" name="btnAdd" value="Add to Cart" />
+                            </form>
+                        </div>
+                        <?php
+
                                 }
                                 echo "</div>";
                                 echo "</div>";
