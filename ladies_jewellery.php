@@ -45,7 +45,7 @@ $sql="";
                         </div>
 
                         <?php
-                            $sql = "SELECT * FROM products WHERE category='Ladies' && sub_category='Necklaces'";
+                            $sql = "SELECT * FROM products WHERE category='Ladies' AND sub_category='Necklaces'";
                             $result = mysqli_query($con,$sql);
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
@@ -55,7 +55,7 @@ $sql="";
 
                                     ?>
                                     <div class="col-sm" style="padding:50px;">
-                                        <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                                        <form class="validation" novalidate action="jewellery.php?page=ladies_jewellery&action=add&id=<?php echo $row['p_id'];?>" method="post">
                                             <img class="product" src="assets/images/<?php echo $row['image'] ?>" /><input
                                                 type='hidden' name='image' value="<?php echo $row['image'];?>" />
                                             <h5 style="padding-top:20px;"><b><?php echo $row['p_name'];?></b><input type='hidden'
@@ -64,8 +64,26 @@ $sql="";
                                                     value="<?php echo $row['material'];?>" /> </div>
                                             <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
                                                     value="<?php echo $row['weight'];?>" />g</div>
-                                            <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                            
+                                            <?php
+                                            if($row['discount']>0){
+
+                                                ?>
+                                                <div><strike>Rs.<?php echo $row['price'];?></strike><input type='hidden'
                                                     name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                                <div style="padding-bottom:20px; color:red;"><h4>Rs. <?php
+                                                echo $row['sale_price'];?></h4><input type='hidden'
+                                                    name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                            <?php
+                                            }else{
+                                            ?>
+                                                <div style="padding-bottom:20px; padding-top:24px;"><h4>Rs. <?php
+                                                echo $row['sale_price'];?></h4><input type='hidden'
+                                                    name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                            <?php
+                                            }
+                                            ?>
+                                            
                                             <div class="col-md-5" style=padding-bottom:20px;>
                                                 <label>Quantity</label>
                                                 <input class="form-control" type="number" min="1" name="txtQty" required>
@@ -99,7 +117,7 @@ $sql="";
                         </div>
 
                         <?php
-                            $sql = "SELECT * FROM products WHERE category='Ladies' && sub_category='Bracelets'";
+                            $sql = "SELECT * FROM products WHERE category='Ladies' AND sub_category='Bracelets'";
                             $result = mysqli_query($con,$sql);
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
@@ -109,7 +127,7 @@ $sql="";
 
                                     ?>
                         <div class="col-sm" style="padding:50px;">
-                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                            <form class="validation" novalidate action="jewellery.php?page=ladies_jewellery&action=add&id=<?php echo $row['p_id'];?>" method="post">
                                 <img class="product" src="assets/images/<?php echo $row['image'] ?>" /><input 
                                 type='hidden' name='image'
                                     value="<?php echo $row['image'];?>" />
@@ -119,8 +137,26 @@ $sql="";
                                         value="<?php echo $row['material'];?>" /> </div>
                                 <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
                                         value="<?php echo $row['weight'];?>" />g</div>
-                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                
+                                <?php
+                                if($row['discount']>0){
+
+                                    ?>
+                                    <div><strike>Rs.<?php echo $row['price'];?></strike><input type='hidden'
                                         name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                    <div style="padding-bottom:20px; color:red;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }else{
+                                ?>
+                                    <div style="padding-bottom:20px; padding-top:24px;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }
+                                ?>
+
                                 <div class="col-md-5" style=padding-bottom:20px;>
                                     <label>Quantity</label>
                                     <input class="form-control" type="number" min="1" name="txtQty" required>
@@ -152,7 +188,7 @@ $sql="";
                         </div>
 
                         <?php
-                            $sql = "SELECT * FROM products WHERE category='Ladies' && sub_category='Rings'";
+                            $sql = "SELECT * FROM products WHERE category='Ladies' AND sub_category='Rings'";
                             $result = mysqli_query($con,$sql);
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
@@ -162,7 +198,7 @@ $sql="";
 
                                     ?>
                         <div class="col-sm" style="padding:50px;">
-                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                            <form class="validation" novalidate action="jewellery.php?page=ladies_jewellery&action=add&id=<?php echo $row['p_id'];?>" method="post">
                                 <img class="product" src="assets/images/<?php echo $row['image'] ?>" width=200
                                     height=200 /><input type='hidden' name='image'
                                     value="<?php echo $row['image'];?>" />
@@ -172,8 +208,26 @@ $sql="";
                                         value="<?php echo $row['material'];?>" /> </div>
                                 <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
                                         value="<?php echo $row['weight'];?>" />g</div>
-                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                
+                                <?php
+                                if($row['discount']>0){
+
+                                    ?>
+                                    <div><strike>Rs.<?php echo $row['price'];?></strike><input type='hidden'
                                         name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                    <div style="padding-bottom:20px; color:red;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }else{
+                                ?>
+                                    <div style="padding-bottom:20px; padding-top:24px;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }
+                                ?>
+
                                 <div class="col-md-5" style=padding-bottom:20px;>
                                     <label>Quantity</label>
                                     <input class="form-control" type="number" min="1" name="txtQty" required>
@@ -205,7 +259,7 @@ $sql="";
                         </div>
 
                         <?php
-                            $sql = "SELECT * FROM products WHERE category='Ladies' && sub_category='Earrings'";
+                            $sql = "SELECT * FROM products WHERE category='Ladies' AND sub_category='Earrings'";
                             $result = mysqli_query($con,$sql);
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
@@ -215,7 +269,7 @@ $sql="";
 
                                     ?>
                         <div class="col-sm" style="padding:50px;">
-                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                            <form class="validation" novalidate action="jewellery.php?page=ladies_jewellery&action=add&id=<?php echo $row['p_id'];?>" method="post">
                                 <img class="product" src="assets/images/<?php echo $row['image'] ?>" width=200
                                     height=200 /><input type='hidden' name='image'
                                     value="<?php echo $row['image'];?>" />
@@ -225,8 +279,26 @@ $sql="";
                                         value="<?php echo $row['material'];?>" /> </div>
                                 <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
                                         value="<?php echo $row['weight'];?>" />g</div>
-                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                
+                                <?php
+                                if($row['discount']>0){
+
+                                    ?>
+                                    <div><strike>Rs.<?php echo $row['price'];?></strike><input type='hidden'
                                         name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                    <div style="padding-bottom:20px; color:red;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }else{
+                                ?>
+                                    <div style="padding-bottom:20px; padding-top:24px;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }
+                                ?>
+
                                 <div class="col-md-5" style=padding-bottom:20px;>
                                     <label>Quantity</label>
                                     <input class="form-control" type="number" min="1" name="txtQty" required>
@@ -257,7 +329,7 @@ $sql="";
                         </div>
 
                         <?php
-                            $sql = "SELECT * FROM products WHERE category='Ladies' && sub_category='Chains'";
+                            $sql = "SELECT * FROM products WHERE category='Ladies' AND sub_category='Chains'";
                             $result = mysqli_query($con,$sql);
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
@@ -267,7 +339,7 @@ $sql="";
 
                                     ?>
                         <div class="col-sm" style="padding:50px;">
-                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                            <form class="validation" novalidate action="jewellery.php?page=ladies_jewellery&action=add&id=<?php echo $row['p_id'];?>" method="post">
                                 <img class="product" src="assets/images/<?php echo $row['image'] ?>" width=200
                                     height=200 /><input type='hidden' name='image'
                                     value="<?php echo $row['image'];?>" />
@@ -277,8 +349,26 @@ $sql="";
                                         value="<?php echo $row['material'];?>" /> </div>
                                 <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
                                         value="<?php echo $row['weight'];?>" />g</div>
-                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                
+                                <?php
+                                if($row['discount']>0){
+
+                                    ?>
+                                    <div><strike>Rs.<?php echo $row['price'];?></strike><input type='hidden'
                                         name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                    <div style="padding-bottom:20px; color:red;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }else{
+                                ?>
+                                    <div style="padding-bottom:20px; padding-top:24px;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }
+                                ?>
+
                                 <div class="col-md-5" style=padding-bottom:20px;>
                                     <label>Quantity</label>
                                     <input class="form-control" type="number" min="1" name="txtQty" required>
@@ -310,7 +400,7 @@ $sql="";
                         </div>
 
                         <?php
-                            $sql = "SELECT * FROM products WHERE category='Ladies' && sub_category='Pendants'";
+                            $sql = "SELECT * FROM products WHERE category='Ladies' AND sub_category='Pendants'";
                             $result = mysqli_query($con,$sql);
                             if(mysqli_num_rows($result)>0){
                                 echo "<div class=container>";
@@ -320,7 +410,7 @@ $sql="";
 
                                     ?>
                         <div class="col-sm" style="padding:50px;">
-                            <form class="validation" novalidate action="jewellery.php?action=add&id=<?php echo $row['p_id'];?>" method="post">
+                            <form class="validation" novalidate action="jewellery.php?page=ladies_jewellery&action=add&id=<?php echo $row['p_id'];?>" method="post">
                                 <img class="product" src="assets/images/<?php echo $row['image'] ?>" width=200
                                     height=200 /><input type='hidden' name='image'
                                     value="<?php echo $row['image'];?>" />
@@ -330,8 +420,26 @@ $sql="";
                                         value="<?php echo $row['material'];?>" /> </div>
                                 <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'
                                         value="<?php echo $row['weight'];?>" />g</div>
-                                <div style=padding-bottom:20px;>Rs.<?php echo $row['price'];?><input type='hidden'
+                                
+                                <?php
+                                if($row['discount']>0){
+
+                                    ?>
+                                    <div><strike>Rs.<?php echo $row['price'];?></strike><input type='hidden'
                                         name='txtPrice' value="<?php echo $row['price'];?>" /></div>
+                                    <div style="padding-bottom:20px; color:red;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }else{
+                                ?>
+                                    <div style="padding-bottom:20px; padding-top:24px;"><h4>Rs. <?php
+                                    echo $row['sale_price'];?></h4><input type='hidden'
+                                        name='txtSalePrice' value="<?php echo $row['sale_price'];?>" /></div>
+                                <?php
+                                }
+                                ?>
+
                                 <div class="col-md-5" style=padding-bottom:20px;>
                                     <label>Quantity</label>
                                     <input class="form-control" type="number" min="1" name="txtQty" required>

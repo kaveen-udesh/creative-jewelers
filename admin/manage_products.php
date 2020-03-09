@@ -16,12 +16,17 @@
     $material="";
     $weight="";
     $price="";
+    $discount="";
+    $dis_price=0;
+    $sale_price=0;
     $image="";
     $msg="";
     $sql="";
     $arrType=array("jpg","jpeg","png","PNG");
 
 if($con){
+
+//------------------- Insert Product ------------------------
  
  if(isset($_POST['btnInsert'])){
     $image=$_FILES['imageUpload']['name'];
@@ -33,14 +38,17 @@ if($con){
      $sub_category=$_POST['txtSubCategory'];
      $material=$_POST['txtMaterial'];
      $weight=$_POST['txtWeight'];
-	 $price=$_POST['txtPrice'];
+     $price=$_POST['txtPrice'];
+     $discount=$_POST['txtDiscount'];
+     $dis_price=$price*($discount/100);
+     $sale_price=$price-$dis_price;
 	 
 	 $temp = $_FILES['imageUpload']['tmp_name'];
 	 $path ="products/";
      $move_path ="../assets/images/".$path;
 	 $ext = explode(".",$image);
 	 if(in_array($ext[1],$arrType)) {
-			$sql="INSERT INTO products VALUES (".$id.",'".$name."','".$category."','".$sub_category."','".$material."',".$weight.",".$price.",'".$path.$image."')" ;
+			$sql="INSERT INTO products VALUES (".$id.",'".$name."','".$category."','".$sub_category."','".$material."',".$weight.",".$price.",'".$path.$image."',".$discount.",".$dis_price.",".$sale_price.")" ;
 			if(mysqli_query($con,$sql)){
 				$msg="<div style=color:blue;><b>New Product Inserted!</b></div>";
 				move_uploaded_file($temp,$move_path.$image);
@@ -57,7 +65,7 @@ if($con){
    }
  }
 	
-//------------------- Delete ------------------------
+//------------------- Delete Product ------------------------
 	
 	if(isset($_POST['btnDelete'])){
         $id = $_POST['txtID'];
@@ -79,13 +87,13 @@ if($con){
 	
 
 
-//------------------- Update ------------------------
+//------------------- Update Product ------------------------
 	
 	if(isset($_POST['btnUpdate'])){
         $id= $_POST['txtID'];
         $image=$_FILES['imageUpload']['name'];
 
-        if(!empty($id)){
+        if(!empty($image)){
             
         $name=$_POST['txtName'];
         $category=$_POST['txtCategory'];
@@ -93,13 +101,16 @@ if($con){
         $material=$_POST['txtMaterial'];
         $weight=$_POST['txtWeight'];
         $price=$_POST['txtPrice'];
+        $discount=$_POST['txtDiscount'];
+        $dis_price=$price*($discount/100);
+        $sale_price=$price-$dis_price;
         
         $temp = $_FILES['imageUpload']['tmp_name'];
         $path ="products/";
         $move_path ="../assets/images/".$path;
         $ext = explode(".",$image);
         
-			$sql = "UPDATE products SET p_name='".$name."', category='".$category."', sub_category='".$sub_category."', material='".$material."', weight=".$weight.", price=".$price." ,image='".$path.$image."' WHERE p_id =".$id."";
+			$sql = "UPDATE products SET p_name='".$name."', category='".$category."', sub_category='".$sub_category."', material='".$material."', weight=".$weight.", price=".$price." ,image='".$path.$image."', discount=".$discount.", dis_price=".$dis_price.", sale_price=".$sale_price." WHERE p_id =".$id."";
 			
 			if(mysqli_query($con,$sql)){
                 $msg="<div style=color:blue;><b>Product Updated!</b></div>";
@@ -109,13 +120,13 @@ if($con){
 				$msg="<div style=color:red;><b>Error :".mysqli_error($con)."</b></div>";
 			}
         }else{
-            $msg="<div style=color:red;><b>Please Enter Product ID</b></div>"; 
+            $msg="<div style=color:red;><b>Please Select Product Image</b></div>"; 
         }
     }
 		
     
     
-//---------------- Search --------------------------
+//---------------- Search Product --------------------------
  
 if(isset($_POST['btnSearch'])){
     $id= $_POST['txtID'];
@@ -133,18 +144,18 @@ if(isset($_POST['btnSearch'])){
                 $weight =$row[5];
                 $price =$row[6];
                 $image = $row[7];
+                $discount = $row[8];
                 $image = "<img src='../assets/images/".$image."' width=150 height=150/>";
             }
         }
         else{
-            $msg="<div style=color:red;><b>Error :".mysqli_error($con)."</b></div>";
+            $msg="<div style=color:red;><b>Error : Not Found".mysqli_error($con)."</b></div>";
         }
 
     }else{
         $msg="<div style=color:red;><b>Please Enter Product ID</b></div>"; 
     }
 }
-
 
 
 
@@ -165,18 +176,17 @@ if(isset($_POST['btnSearch'])){
         <h1>Manage Products</h1>
     </div>
     <br />
-    <form class="validation" novalidate action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"
-        enctype="multipart/form-data">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 
-        <table width="520" height="540">
+        <table width="520" height="600">
             <tr>
                 <td><label><b>Product ID :</b></label></td>
-                <td><input name="txtID" type="text" class="form-control" value="<?php echo $id ?>" required></td>
+                <td><input name="txtID" type="text" class="form-control" value="<?php echo $id ?>" /></td>
             </tr>
 
             <tr>
                 <td><label><b>Product Name :</b></label></td>
-                <td><input name="txtName" type="text" class="form-control" value="<?php echo $name ?>" required></td>
+                <td><input name="txtName" type="text" class="form-control" value="<?php echo $name ?>" /></td>
             </tr>
 
             <tr>
@@ -204,19 +214,31 @@ if(isset($_POST['btnSearch'])){
 
             <tr>
                 <td><label><b>Material :</b></label></td>
-                <td><input name="txtMaterial" type="text" class="form-control" value="<?php echo $material ?>" required>
+                <td><input name="txtMaterial" type="text" class="form-control" value="<?php echo $material ?>" />
                 </td>
             </tr>
 
             <tr>
                 <td><label><b>Weight (g) :</b></label></td>
-                <td><input name="txtWeight" type="text" class="form-control" value="<?php echo $weight ?>" required>
+                <td><input name="txtWeight" type="text" class="form-control" value="<?php echo $weight ?>" />
                 </td>
             </tr>
 
             <tr>
                 <td><label><b>Price (Rs.) :</b></label></td>
-                <td><input name="txtPrice" type="text" class="form-control" value="<?php echo $price ?>" required></td>
+                <td><input name="txtPrice" type="text" class="form-control" value="<?php echo $price ?>" /></td>
+            </tr>
+
+            <tr>
+                <td><label><b>Discount (%) :</b></label></td>
+                <td>
+                    <select class="form-control" name="txtDiscount" value="<?php echo $discount ?>">
+                        <option <?php if ($discount == '0') {echo 'selected';}?>>0</option>
+                        <option <?php if ($discount == '5') {echo 'selected';}?>>5</option>
+                        <option <?php if ($discount == '10') {echo 'selected';}?>>10</option>
+                        <option <?php if ($discount == '15') {echo 'selected';}?>>15</option>
+                    </select>
+                </td>
             </tr>
 
             <tr>
@@ -240,7 +262,8 @@ if(isset($_POST['btnSearch'])){
                 style="padding-right: 10px;"></i>Delete</button>
         <button type="submit" class="btn btn-info" name="btnSearch"><i class="fas fa-search"
                 style="padding-right: 10px;"></i>Search</button>
-        <button type="submit" class="btn btn-outline-danger" name="btnClear"><i class="fas fa-broom"></i>Clear</button>
+        <button type="submit" class="btn btn-outline-danger" name="btnClear"><i class="fas fa-broom"
+                style="padding-right: 10px;"></i>Clear</button>
         <br /><br />
         <?php echo $msg;?>
     </form><br />

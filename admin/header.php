@@ -25,12 +25,12 @@
     <div class="container-fluid">
         <div class="row no-gutters" style="background-color:#f2f2f2;">
             <div class="col" style="margin-left:20px;">
-                <a class="navbar-brand" href="index.php"><img id="logo" src="../assets/images/adminLogo.png"></a>
+                <a class="navbar-brand" href="dashboard.php"><img id="logo" src="../assets/images/adminLogo.png"></a>
             </div>
 
             <div class="col" align="right">
                 <nav class="navbar" style="float: right;">
-                    <a class="nav-link" href="login.php"><i class="fas fa-sign-out-alt"></i><b
+                    <a class="nav-link" href="index.php"><i class="fas fa-sign-out-alt"></i><b
                             style="padding-left: 10px;">LOGOUT</b></a>
                 </nav>
             </div>

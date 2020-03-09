@@ -32,17 +32,17 @@ session_start();
            
            $count = count($_SESSION['cart']);
            
-           $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 'weight'=>$_POST['txtWeight'], 'price'=>$_POST['txtPrice'], 'qty'=>$_POST['txtQty']);
+           $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 'weight'=>$_POST['txtWeight'], 'sale_price'=>$_POST['txtSalePrice'], 'qty'=>$_POST['txtQty']);
            
            $_SESSION['cart'][$count]=$pro_Array;
        }	 
     }
     else{
                 
-        $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 'weight'=>$_POST['txtWeight'], 'price'=>$_POST['txtPrice'], 'qty'=>$_POST['txtQty']);
+        $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 'weight'=>$_POST['txtWeight'], 'sale_price'=>$_POST['txtSalePrice'], 'qty'=>$_POST['txtQty']);
            
          $_SESSION['cart'][0]=$pro_Array;
-       }	
+    }	
 }
 
 
@@ -53,9 +53,7 @@ if(isset($_POST['btnRemove'])){
 				unset($_SESSION['cart'][$k]);
 			}
         }
-        
-
-    }
+}
     
     
 
@@ -120,13 +118,9 @@ if(isset($_POST['btnClear'])){
 					                    $cart_count=0;
 					
 					                    if (isset($_SESSION['cart_items'])){
-						
 						                    $cart_count=count($_SESSION['cart']);
-						
                                             }
                                         ?>
-
-
 
                                             <!-- Button trigger modal -->
                                             <button type="button" id="btnCart" class="btn" data-toggle="modal"
@@ -164,8 +158,8 @@ if(isset($_POST['btnClear'])){
                                                                     <th></th>
                                                                     <th>Name</th>
                                                                     <th>Material</th>
-                                                                    <th>Weight(g)</th>
-                                                                    <th>Price(Rs.)</th>
+                                                                    <th>Weight</th>
+                                                                    <th>Price</th>
                                                                     <th>Quantity</th>
                                                                     <th>Subtotal</th>
                                                                     <th></th>
@@ -180,11 +174,11 @@ if(isset($_POST['btnClear'])){
                                                                                 width=auto height=80 /></td>
                                                                         <td><?php echo $value['name'] ?></td>
                                                                         <td><?php echo $value['material'] ?></td>
-                                                                        <td><?php echo $value['weight'] ?></td>
-                                                                        <td><?php echo $value['price'] ?></td>
+                                                                        <td><?php echo $value['weight'] ?>g</td>
+                                                                        <td>Rs.<?php echo $value['sale_price'] ?></td>
                                                                         <td><?php echo $value['qty'] ?></td>
-                                                                        <?php $subTotal=$value['price']*$value['qty']; ?>
-                                                                        <td><?php echo $subTotal ?></td>
+                                                                        <?php $subTotal=$value['sale_price']*$value['qty']; ?>
+                                                                        <td>Rs.<?php echo $subTotal ?></td>
                                                                         <td><input type="submit"
                                                                                 class="btn btn-outline-danger"
                                                                                 value="Remove" name="btnRemove" />
@@ -200,9 +194,9 @@ if(isset($_POST['btnClear'])){
                                                                     ?>
                                                                 <form method="post">
                                                                     <tr style="text-align:center;">
-                                                                        <td colspan="6" align="right"><b>Total : Rs.</b>
+                                                                        <td colspan="6" align="right"><b>Total :</b>
                                                                         </td>
-                                                                        <td><b><?php echo $total; ?></b></td>
+                                                                        <td><b>Rs.<?php echo $total; ?></b></td>
                                                                         <td></td>
                                                                     </tr>
                                                             </table>
@@ -212,8 +206,7 @@ if(isset($_POST['btnClear'])){
                                                         </div>
                                                         <div class="modal-footer">
 
-                                                            <a href="#" type="submit"
-                                                                class="btn btn-success">Checkout</a>
+                                                            <a href="payment.php" type="submit" id="btnCheck" class="btn btn-success">Checkout</a>
                                                             <input type="submit" class="btn btn-danger"
                                                                 value="Clear Cart" name="btnClear" />
                                                             </form>
@@ -234,9 +227,15 @@ if(isset($_POST['btnClear'])){
 
                                         </li>
                                         <?php if(isset($_SESSION["email"])){?>
-                                        <li style="border-left: 2px solid black;">
-                                            <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i><b
-                                                    style="padding-left: 10px;">LOGOUT</b></a>      
+                                        <li class="nav-item dropdown" style="border-left: 2px solid black;">
+                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                                data-hover="dropdown" href="#" role="button" aria-haspopup="true"
+                                                aria-expanded="false"><i class="fas fa-user"></i><b style="padding-left: 10px;">ACCOUNT</b></a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="my_account.php">MY ACCOUNT</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="logout.php">LOGOUT</a>
+                                            </div>
                                         </li>
                                         <?php } else {?>
                                             <li style="border-left: 2px solid black;">

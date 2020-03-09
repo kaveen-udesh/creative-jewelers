@@ -20,6 +20,9 @@ $id="";
     <br/>
 
     <?php
+
+//------------------- View All Products ------------------------
+
     $sql = "SELECT * FROM products";
     $result = mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
@@ -34,6 +37,8 @@ $id="";
                     <th>"."  &nbsp;"."Material"."</th>
                     <th>"."  &nbsp;"."Weight"."</th>
                     <th>"."  &nbsp;"."Price"."</th>
+                    <th>"."  &nbsp;"."Discount"."</th>
+                    <th>"."  &nbsp;"."Discount Price"."</th>
 				</tr>";
 			$r=1;
 			$crl="";
@@ -55,8 +60,10 @@ $id="";
                     <td>"."  ".$row[2]."</td>
                     <td>"."  ".$row[3]."</td>
                     <td>"."  ".$row[4]."</td>
-                    <td>"."  ".$row[5]."</td>
-                    <td>"."  ".$row[6]."</td>
+                    <td>"."  ".$row[5]."g</td>
+                    <td>"."  Rs.".$row[6]."</td>
+                    <td>"."  ".$row[8]."%</td>
+                    <td>"."  Rs.".$row[9]."</td>
 
                 </tr>";
                 

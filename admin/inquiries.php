@@ -11,7 +11,7 @@ $sql="";
 $msg2="";
 $id="";
 
-//------------------- Delete ------------------------
+//------------------- Delete Inquiry ------------------------
 	
 if(isset($_POST['btn2Delete'])){
     $id = $_POST['txtID'];
@@ -36,6 +36,9 @@ if(isset($_POST['btn2Delete'])){
     <br/>
 
     <?php
+
+//------------------- View All Inquiries ------------------------
+
     $sql = "SELECT * FROM inquiries";
     $result = mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
@@ -166,7 +169,7 @@ if(isset($_POST['btnReply'])){
 
     <h2 style="padding-bottom:20px;">Reply Message</h2>
 
-<form action="index.php?page=inquiries" method="post">
+<form action="dashboard.php?page=inquiries" method="post">
 <table width="600" height="300">
   <tr>
     <td>To</td>

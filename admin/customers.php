@@ -9,16 +9,16 @@ $con = mysqli_connect($server,$user,$pass,$database);
 //-------------- Connection--------
 $sql="";
 $msg1="";
-$id="";
+$email="";
 
 if($con){
 
-//------------------- Delete ------------------------
+//------------------- Delete Customer ------------------------
 	
 if(isset($_POST['btn1Delete'])){
-    $id = $_POST['txtID'];
+    $email = $_POST['txtEmail'];
         
-        $sql = "DELETE FROM users WHERE id=".$id."";
+        $sql = "DELETE FROM users WHERE email='".$email."'";
         if(mysqli_query($con,$sql)){
             $msg1="<div style=color:red;><b>Customer Deleted!</b></div>";
         }
@@ -42,12 +42,13 @@ if(isset($_POST['btn1Delete'])){
     <br/>
 
     <?php
-    $sql = "SELECT * FROM users";
+    $sql = "SELECT * FROM users WHERE user_type='Customer'";
     $result = mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
             
 			echo "<table width=1050px;>";
-			echo "<tr height=40px; style=background-color:#333;color:white;text-align:center;>
+            echo "<tr height=40px; style=background-color:#333;color:white;text-align:center;>
+                    <th>"."  &nbsp;"."Email"."</th>
 					<th>"."  &nbsp;"."First Name"."</th>
                     <th>"."  &nbsp;"."Last Name"."</th>
                     <th>"."  &nbsp;"."Street Address"."</th>
@@ -55,8 +56,7 @@ if(isset($_POST['btn1Delete'])){
                     <th>"."  &nbsp;"."Zip Code"."</th>
                     <th>"."  &nbsp;"."Country"."</th>
                     <th>"."  &nbsp;"."Birthday"."</th>
-                    <th>"."  &nbsp;"."Email"."</th>
-                    <th>"."  &nbsp;"."Password"."</th>
+                    <th>"."  &nbsp;"."Reg Date"."</th>
                     <th></th>
 				</tr>";
 			$r=1;
@@ -71,18 +71,18 @@ if(isset($_POST['btn1Delete'])){
                 echo "<form method=post>";
                 echo " <tr height=40px; style=text-align:center;background-color:$crl;>" ?>
             
-                    <input type='hidden' name='txtID' value="<?php echo $row[0];?>" />
+                    <input type='hidden' name='txtEmail' value="<?php echo $row[7];?>" />
                     <?php
 
-                    echo"<td>"."  ".$row[1]."</td>
+                    echo"<td>"."  ".$row[7]."</td>
+                    <td>"."  ".$row[0]."</td>
+                    <td>"."  ".$row[1]."</td>
                     <td>"."  ".$row[2]."</td>
                     <td>"."  ".$row[3]."</td>
                     <td>"."  ".$row[4]."</td>
                     <td>"."  ".$row[5]."</td>
                     <td>"."  ".$row[6]."</td>
-                    <td>"."  ".$row[7]."</td>
-                    <td>"."  ".$row[8]."</td>
-                    <td>"."  ".$row[9]."</td>" ?>
+                    <td>"."  ".$row[10]."</td>" ?>
                     <td style="padding:20px;"><button type="submit" class="btn btn-danger" title="Delete Customer" name="btn1Delete"><i class="fas fa-trash-alt"></i></button></td>
 
                 <?php
