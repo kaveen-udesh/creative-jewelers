@@ -1,4 +1,4 @@
-<?php include('layout/header.php') ?>
+<?php include('header.php') ?>
 
 <?php
 
@@ -18,8 +18,8 @@ $con = mysqli_connect($server,$user,$pass,$database);
 	
 if(isset($_POST['btnSave'])){
 
-    if(!empty($_SESSION["email"])){
-        $email= $_SESSION["email"];
+    if(!empty($_SESSION['username'])){
+        $username= $_SESSION['username'];
 
         $fname=$_POST['txtFname'];
         $lname=$_POST['txtLname'];
@@ -31,7 +31,7 @@ if(isset($_POST['btnSave'])){
         $birthday=$_POST['txtBirthday'];
 
     
-        $sql = "UPDATE users SET f_name='".$fname."', l_name='".$lname."', address='".$address."', city='".$city."', zip_code=".$zip.", country='".$country."', birthday='".$birthday."' ,password='".$password."' WHERE email ='".$email."'";
+        $sql = "UPDATE users SET f_name='".$fname."', l_name='".$lname."', address='".$address."', city='".$city."', zip_code=".$zip.", country='".$country."', birthday='".$birthday."' ,password='".$password."' WHERE email ='".$username."'";
         
         if(mysqli_query($con,$sql)){
             $msg="<div class='alert alert-info' role='alert'><b>Account Updated!</b></div>";
@@ -46,20 +46,20 @@ if(isset($_POST['btnSave'])){
 
 
 <br /><br />
-<div style="padding-top:76px;" ;>
+<div>
     <div class="alert alert-success" role="alert" align="center">
     <h1>MY ACCOUNT</h1>
     </div>
 </div>
-<form class="validation" novalidate action="my_account.php" method="post">
+<form class="validation" novalidate action="account.php" method="post">
 <div class="container" style="padding-top: 30px; padding-bottom: 30px;">
     <div class="row" style="padding-bottom: 10px;">
         <div class="col">
             <?php
                  
-            if(!empty($_SESSION["email"])){
-            $email= $_SESSION["email"];
-            $sql = "SELECT * FROM users WHERE user_type='Customer' AND email='".$email."'";
+            if(!empty($_SESSION['username'])){
+            $username= $_SESSION['username'];
+            $sql = "SELECT * FROM users WHERE user_type='Admin' AND email='".$username."'";
 
             $result = mysqli_query($con,$sql);
             if(mysqli_num_rows($result)>0){
@@ -148,5 +148,17 @@ if(isset($_POST['btnSave'])){
 </div>
 </form>
 
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+</body>
 
-<?php include('layout/footer.php') ?>
+</html>

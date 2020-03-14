@@ -42,18 +42,16 @@ if(isset($_POST['btn1Delete'])){
     <br/>
 
     <?php
-    $sql = "SELECT * FROM users WHERE user_type='Customer'";
+    $sql = "SELECT * FROM users WHERE user_type='Customer' ORDER BY date";
     $result = mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
-            
-			echo "<table width=1050px;>";
+            echo "<div class='table-wrapper-scroll-y my-custom-scrollbar'>";
+			echo "<table class='table table-bordered table-striped mb-0'>";
             echo "<tr height=40px; style=background-color:#333;color:white;text-align:center;>
                     <th>"."  &nbsp;"."Email"."</th>
-					<th>"."  &nbsp;"."First Name"."</th>
-                    <th>"."  &nbsp;"."Last Name"."</th>
+					<th>"."  &nbsp;"."Name"."</th>
                     <th>"."  &nbsp;"."Street Address"."</th>
                     <th>"."  &nbsp;"."City"."</th>
-                    <th>"."  &nbsp;"."Zip Code"."</th>
                     <th>"."  &nbsp;"."Country"."</th>
                     <th>"."  &nbsp;"."Birthday"."</th>
                     <th>"."  &nbsp;"."Reg Date"."</th>
@@ -75,11 +73,10 @@ if(isset($_POST['btn1Delete'])){
                     <?php
 
                     echo"<td>"."  ".$row[7]."</td>
-                    <td>"."  ".$row[0]."</td>
-                    <td>"."  ".$row[1]."</td>
+                    <td>"."  ".$row[0]." ".$row[1]."</td>
                     <td>"."  ".$row[2]."</td>
                     <td>"."  ".$row[3]."</td>
-                    <td>"."  ".$row[4]."</td>
+
                     <td>"."  ".$row[5]."</td>
                     <td>"."  ".$row[6]."</td>
                     <td>"."  ".$row[10]."</td>" ?>
@@ -91,6 +88,7 @@ if(isset($_POST['btn1Delete'])){
 			$r++;
 		}
         echo "</table>";
+        echo "</div>";
         echo "<br/>";
         echo $msg1;
 	}

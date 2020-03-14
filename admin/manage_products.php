@@ -178,7 +178,7 @@ if(isset($_POST['btnSearch'])){
     <br />
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 
-        <table width="520" height="600">
+        <table width="520" height="550">
             <tr>
                 <td><label><b>Product ID :</b></label></td>
                 <td><input name="txtID" type="text" class="form-control" value="<?php echo $id ?>" /></td>

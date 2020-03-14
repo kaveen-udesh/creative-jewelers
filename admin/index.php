@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -33,13 +35,14 @@ $con = mysqli_connect($server,$user,$pass,$database);
 if(isset($_POST['btnLogin'])){
 	$username = $_POST['txtUsername'];
 	$pass = $_POST['txtPassword'];
-	$sql = "SELECT * FROM users WHERE f_name='".$username."' && password='".$pass."' && user_type='Admin'";
+	$sql = "SELECT * FROM users WHERE email='".$username."' && password='".$pass."' && user_type='Admin'";
 	$result = mysqli_query($con,$sql);
 	if(mysqli_num_rows($result)>0){
-    
+         $_SESSION['username'] = $username;
 	?>
-        <script type="text/javascript">
-		window.location.href="dashboard.php";</script>
+<script type="text/javascript">
+window.location.href = "dashboard.php";
+</script>
      <?php
 	}else{ 
         $msg = "<div class='alert alert-danger' role=alert>
@@ -62,7 +65,7 @@ if(isset($_POST['btnLogin'])){
                 <h1 style="color:#00dda8; padding-top: 30px; padding-bottom: 30px;"><b>USER LOGIN</b></h1>
                 <form class="validation" novalidate action="index.php" method="post">
                     <div class="form-group col-xl-7">
-                        <input name="txtUsername" type="text" class="form-control" placeholder="Username" required>
+                        <input name="txtUsername" type="email" class="form-control" placeholder="Email" required>
                     </div>
                     <div class="form-group col-xl-7">
                         <input name="txtPassword" type="password" class="form-control" placeholder="Password" required>

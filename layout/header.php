@@ -19,34 +19,35 @@
 
 <body>
 
-    <?php
+<?php
 session_start();
 
- //add to cart
+ //----------------- Add to cart ----------------------
  if(isset($_POST['btnAdd'])){
-    if(isset($_SESSION['cart'])){
-        
+
+    if(isset($_SESSION['cart'])){ 
       $pID = array_column($_SESSION['cart'],'id'); 
-       
        if(!in_array($_GET['id'],$pID)){
            
            $count = count($_SESSION['cart']);
-           
+
            $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 'weight'=>$_POST['txtWeight'], 'sale_price'=>$_POST['txtSalePrice'], 'qty'=>$_POST['txtQty']);
            
-           $_SESSION['cart'][$count]=$pro_Array;
+           array_push($_SESSION['cart'], $pro_Array);
        }	 
     }
     else{
                 
         $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 'weight'=>$_POST['txtWeight'], 'sale_price'=>$_POST['txtSalePrice'], 'qty'=>$_POST['txtQty']);
            
-         $_SESSION['cart'][0]=$pro_Array;
+        $_SESSION['cart'] = array();
+         array_push($_SESSION['cart'], $pro_Array);
     }	
 }
 
 
-//Remove cart Items
+//--------------- Remove cart Items ---------------------
+
 if(isset($_POST['btnRemove'])){
 		foreach($_SESSION['cart'] as $k=>$value){
 			if($value['id']==$_POST['id']){
@@ -54,19 +55,18 @@ if(isset($_POST['btnRemove'])){
 			}
         }
 }
-    
-    
+   
 
-//Clear cart
+//---------------- Clear cart -----------------------
+
 if(isset($_POST['btnClear'])){
 	foreach($_SESSION['cart'] as $k=>$value){
 		unset($_SESSION['cart'][$k]);
 	}
 }
-
 ?>
-
-    <div class="container-fluid" data-animate="fadeInUp">
+<!-- Nav bar -->
+    <div class="container-fluid">
         <div>
             <nav class="navbar fixed-top" id="navbar">
                 <diV class="container">
@@ -98,7 +98,7 @@ if(isset($_POST['btnClear'])){
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item"
                                                     href="jewellery.php?page=ladies_jewellery">LADIES JEWELLERY</a>
-                                                <a class="dropdown-item" href="jewellery.php?page=gens_jewellery">GENS
+                                                <a class="dropdown-item" href="jewellery.php?page=gens_jewellery">GENTS
                                                     JEWELLERY</a>
                                                 <a class="dropdown-item" href="jewellery.php?page=kids_jewellery">KIDS
                                                     JEWELLERY</a>
@@ -114,10 +114,10 @@ if(isset($_POST['btnClear'])){
                                     <ul class="nav nav-pills">
                                         <li style="margin-top:2px;">
 
-                                            <?php 
+                                        <?php 
 					                    $cart_count=0;
 					
-					                    if (isset($_SESSION['cart_items'])){
+					                    if (isset($_SESSION['cart'])){
 						                    $cart_count=count($_SESSION['cart']);
                                             }
                                         ?>
@@ -196,16 +196,12 @@ if(isset($_POST['btnClear'])){
                                                                     <tr style="text-align:center;">
                                                                         <td colspan="6" align="right"><b>Total :</b>
                                                                         </td>
-                                                                        <td><b>Rs.<?php echo $total; ?></b></td>
+                                                                        <td><b>Rs.<?php echo number_format($total, 2); ?></b></td>
                                                                         <td></td>
                                                                     </tr>
                                                             </table>
-
-
-
                                                         </div>
                                                         <div class="modal-footer">
-
                                                             <a href="payment.php" type="submit" id="btnCheck" class="btn btn-success">Checkout</a>
                                                             <input type="submit" class="btn btn-danger"
                                                                 value="Clear Cart" name="btnClear" />
@@ -214,18 +210,15 @@ if(isset($_POST['btnClear'])){
                                                             }else{
                                                                 echo "<div style=color:red;><b>Empty Cart !</b></div>";
                                                             }
-
                                                             ?>
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Close</button>
-
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </li>
+
                                         <?php if(isset($_SESSION["email"])){?>
                                         <li class="nav-item dropdown" style="border-left: 2px solid black;">
                                             <a class="nav-link dropdown-toggle" data-toggle="dropdown"

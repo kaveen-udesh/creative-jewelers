@@ -100,10 +100,11 @@ body {
 }
 
 .img2 {
-  transition-duration: 0.5s;
-  padding: 5px;
+  transition-duration: 0.2s;
+  padding: 4px;
   width: auto;
   height: 60px;
+  margin: 15px;
 }
 
 .img2:hover {

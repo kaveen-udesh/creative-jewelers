@@ -35,7 +35,7 @@ $sql="";
                     
                     <div align="center" class="container" style="padding-top:50px;">
                         <div class="alert alert-success" role="alert">
-                            <h1>GENS JEWELLERY</h1>
+                            <h1>GENTS JEWELLERY</h1>
                             <h3>BRACELETS</h3>
                         </div>
 
@@ -105,7 +105,7 @@ $sql="";
                     
                     <div align="center" class="container" style="padding-top:50px;">
                         <div class="alert alert-success" role="alert">
-                            <h1>GENS JEWELLERY</h1>
+                            <h1>GENTS JEWELLERY</h1>
                             <h3>RINGS</h3>
                         </div>
 
@@ -175,7 +175,7 @@ $sql="";
                     
                     <div align="center" class="container" style="padding-top:50px;">
                         <div class="alert alert-success" role="alert">
-                            <h1>GENS JEWELLERY</h1>
+                            <h1>GENTS JEWELLERY</h1>
                             <h3>PENDANTS</h3>
                         </div>
 
@@ -246,7 +246,7 @@ $sql="";
                     
                     <div align="center" class="container" style="padding-top:50px;">
                         <div class="alert alert-success" role="alert">
-                            <h1>GENS JEWELLERY</h1>
+                            <h1>GENTS JEWELLERY</h1>
                             <h3>CHAINS</h3>
                         </div>
 

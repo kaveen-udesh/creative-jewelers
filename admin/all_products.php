@@ -26,8 +26,9 @@ $id="";
     $sql = "SELECT * FROM products";
     $result = mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
-            
-			echo "<table width=1050px;>";
+
+            echo "<div class='table-wrapper-scroll-y my-custom-scrollbar'>";
+			echo "<table class='table table-bordered table-striped mb-0'>";
 			echo "<tr height=40px; style=background-color:#333;color:white;text-align:center;>
                     <th></th>
                     <th>"."  &nbsp;"."Product ID"."</th>
@@ -70,6 +71,7 @@ $id="";
 			$r++;
 		}
         echo "</table>";
+        echo "</div>";
         echo "<br/>";
         echo $msg1;
 	}

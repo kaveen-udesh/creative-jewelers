@@ -32,7 +32,7 @@ $search="";
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="jewellery.php?page=gens_jewellery" style="padding-left:30px;"><b><i
-                                    class="fas fa-male" style="padding-right:5px;"></i>GENS</b></a>
+                                    class="fas fa-male" style="padding-right:5px;"></i>GENTS</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="jewellery.php?page=kids_jewellery" style="padding-left:30px;"><b><i
@@ -57,12 +57,13 @@ $search="";
       $sql = "SELECT * FROM products WHERE p_name LIKE '%$search%'";
       $result = mysqli_query($con,$sql);
             if(mysqli_num_rows($result)>0){
-                echo "<div class=container>";
+                
                 ?>
                 <div class="alert alert-success" role="alert" style="margin-top:20px;">
                 <h2>Searched : <?php echo $search; ?></h2>
                 </div>
-                <?php                    
+                <?php
+                echo "<div class=container>";                    
                 echo "<div class=row>";
 
                 while($row = mysqli_fetch_assoc($result)){
@@ -75,6 +76,7 @@ $search="";
                                 value="<?php echo $row['image'];?>" />
                             <h5 style="padding-top:20px;"><b><?php echo $row['p_name'];?></b><input type='hidden'
                                     name='txtName' value="<?php echo $row['p_name'];?>" /></h5>
+                            <div>Category : <?php echo $row['category']."-".$row['sub_category'];?></div>
                             <div>Material : <?php echo $row['material'];?><input type='hidden' name='txtMaterial'
                                     value="<?php echo $row['material'];?>" /> </div>
                             <div>Weight : <?php echo $row['weight'];?><input type='hidden' name='txtWeight'

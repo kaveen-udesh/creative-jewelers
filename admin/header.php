@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 
@@ -30,8 +31,17 @@
 
             <div class="col" align="right">
                 <nav class="navbar" style="float: right;">
-                    <a class="nav-link" href="index.php"><i class="fas fa-sign-out-alt"></i><b
-                            style="padding-left: 10px;">LOGOUT</b></a>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i><b style="padding-left: 10px;">ACCOUNT</b>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="account.php">MY ACCOUNT</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="index.php">LOGOUT</a>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </div>

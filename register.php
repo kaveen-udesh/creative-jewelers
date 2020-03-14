@@ -28,7 +28,7 @@ if(isset($_POST['btnRegister'])){
         
         if(mysqli_query($con,$sql)){
             $_SESSION["email"] = $email;
-            echo '<script type="text/javascript">alert("You are now Registered Member!\n Welcome to the Creative Jewelers")</script>';
+            echo '<script type="text/javascript">alert("You are now Registered Member!\nWelcome to the Creative Jewelers")</script>';
             ?>
 <script type="text/javascript">
 window.location.href = "index.php";

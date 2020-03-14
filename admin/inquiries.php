@@ -39,11 +39,11 @@ if(isset($_POST['btn2Delete'])){
 
 //------------------- View All Inquiries ------------------------
 
-    $sql = "SELECT * FROM inquiries";
+    $sql = "SELECT * FROM inquiries ORDER BY date";
     $result = mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
-            
-			echo "<table width=1050px;>";
+            echo "<div class='table-wrapper-scroll-y my-custom-scrollbar'>";
+			echo "<table class='table table-bordered table-striped mb-0'>";
 			echo "<tr height=40px; style=background-color:#333;color:white;text-align:center;>
 					<th>"."  &nbsp;"."Name"."</th>
                     <th>"."  &nbsp;"."Email"."</th>
@@ -83,6 +83,7 @@ if(isset($_POST['btn2Delete'])){
 			$r++;
 		}
         echo "</table>";
+        echo "</div>";
         echo "<br/>";
         echo $msg2;
 	}
@@ -109,19 +110,19 @@ $subject="";
 $msg="";
 
 if(isset($_POST['btnSend'])){
-try{
-	$mail = new PHPMailer(true);
+    $mail = new PHPMailer(true);
+    try {
 	
 	//Server settings
-    $mail->SMTPDebug = 0;                      					// Enable verbose debug output
+    $mail->SMTPDebug  = 0;                      				// Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                    	// Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'kaveenrulz98@gmail.com';  				// SMTP username
-    $mail->Password   = 'askrulz123';  												// SMTP password
+    $mail->Username   = 'creative.jewellers10@gmail.com';  				// SMTP username
+    $mail->Password   = '8O1WFi4AAgW7R4hE';  												// SMTP password
     $mail->SMTPSecure = 'tls';         							// Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 587;                                    // TCP port to connect to
-	$mail->Mailer = 'smtp';
+	$mail->Mailer     = 'smtp';
 	
 	//-------------------- get values
 	
@@ -131,7 +132,7 @@ try{
 
 	
 	//Recipients
-    $mail->setFrom('kaveenrulz98@gmail.com');
+    $mail->setFrom('creative.jewellers10@gmail.com', 'Creative Jewelers');
     $mail->addAddress($to);     								// Add a recipient
     /*$mail->addAddress('ellen@example.com');               	// Name is optional
     $mail->addReplyTo('info@example.com', 'Information');
@@ -165,7 +166,8 @@ if(isset($_POST['btnReply'])){
             if($row = mysqli_fetch_row($result)){
 
     ?>
-    <div  align="center" class="container" style="margin-top:50px;">
+    <div class="container" style="border:solid 1px #CCCCCC; border-radius:20px; margin-bottom:30px;">
+    <div  align="center" style="margin-top:30px; margin-bottom:20px;">
 
     <h2 style="padding-bottom:20px;">Reply Message</h2>
 
@@ -189,6 +191,7 @@ if(isset($_POST['btnReply'])){
   
 </table>
 </form>
+</div>
 </div>
 
 

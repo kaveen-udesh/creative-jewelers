@@ -1,4 +1,25 @@
 <?php include('header.php') ?>
+
+<?php
+
+$server = "localhost";
+$user = "root";
+$pass = "";
+$database = "creative_jewelers_kaveen";
+$username="";
+
+$con = mysqli_connect($server,$user,$pass,$database);
+
+     if(empty($_SESSION['username'])){
+         ?>
+                   <script type="text/javascript">
+                   window.location.href = "index.php";
+                   </script>
+                   <?php
+       }
+
+?>
+
 <div class="container-fluid">
     <div class="row no-gutters">
         <div class="col-2" style="background-color:#f2f2f2; padding-top:50px;">
