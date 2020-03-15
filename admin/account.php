@@ -44,7 +44,6 @@ if(isset($_POST['btnSave'])){
 
 ?>
 
-
 <br /><br />
 <div>
     <div class="alert alert-success" role="alert" align="center">
@@ -67,8 +66,6 @@ if(isset($_POST['btnSave'])){
             if($row = mysqli_fetch_assoc($result)){
                         
             ?>
-
-            
 
             <div class="form-group">
                 <fieldset disabled>
@@ -96,9 +93,6 @@ if(isset($_POST['btnSave'])){
                 </div>
         </div>
 
-            
-
-
         <div class="col" align="justify">
             
             <div class="form-group">
@@ -125,12 +119,8 @@ if(isset($_POST['btnSave'])){
                     <input class="form-control" value="<?php echo $row['date'];?>">
                 </fieldset>
             </div>
-
-            
-
         </div>
 
-        
     </div>
     <div align="center">
     <br/>
@@ -141,10 +131,9 @@ if(isset($_POST['btnSave'])){
             <?php
                                                                         
             }
-            }
-            }
-            
-            ?>
+        }
+    }
+?>
 </div>
 </form>
 

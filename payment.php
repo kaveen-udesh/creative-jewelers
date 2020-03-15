@@ -187,12 +187,9 @@
                         echo '<script type="text/javascript">alert("Payment Successfully!")</script>';
 
                         echo '<script type="text/javascript">window.location.href = "index.php";</script>';
-                    
-                
-            }
-                
                 }
             }
+        }
         } else {
             echo '<script type="text/javascript">window.location.href = "jewellery.php?page=ladies_jewellery";</script>';
         }
@@ -270,8 +267,6 @@
                         value="Creative Jewellers - Order Bill" />
                     <input type="hidden" class="form-control" name="txtMsg" value="Rs.<?php echo $total;?>" />
 
-
-
                     <div class="form-group">
                         <label><b>Payment Method</b></label>
 
@@ -289,7 +284,6 @@
                     </div>
                     <div class="form-group">
                         <label><b>Exp Month</b></label>
-
                         <select class="form-control" name="txtExpmonth">
                             <option>January</option>
                             <option>February</option>
@@ -322,10 +316,7 @@
                                 style="padding-right: 10px;"></i>PLACE AN ORDER</button>
                     </div>
                 </form>
-
-
             </div>
-
             <div class="col" style="margin:30px;" align="center">
                 <h1><b>Customer Details</b></h1><br />
 

@@ -24,11 +24,6 @@ if(isset($_POST['btnSubmit'])){
         
         if(mysqli_query($con,$sql)){
             echo '<script type="text/javascript">alert("Message send successfully!")</script>';
-            ?>
-<script type="text/javascript">
-window.location.href = "contact.php";
-</script>
-<?php
         }
         else{
             $msg = "<div style=color:red;><b>Error :".mysqli_error($con)."<b></div>";
@@ -37,8 +32,6 @@ window.location.href = "contact.php";
 
 ?>
 
-
-
 <br /><br />
 <div style="padding-top:76px;">
     <div class="alert alert-success" role="alert" align="center">
@@ -46,12 +39,9 @@ window.location.href = "contact.php";
     </div>
 </div>
 
-
-
 <div class="container" align="center" style="padding-bottom:40px; padding-top:40px;">
     <div class="row">
         <div class="col" id="map">
-            
         </div>
         <div class="col" style="padding-left:60px;">
             <h1>Leave your message</h1>
@@ -64,17 +54,16 @@ window.location.href = "contact.php";
                             <input name="txtName" type="text" class="form-control" placeholder="Name" required>
                         </div>
                         <div class="col">
-                        <input name="txtPhone" type="number" min="99999999" max="999999999" class="form-control"
+                            <input name="txtPhone" type="number" min="99999999" max="999999999" class="form-control"
                                 placeholder="Phone Number" required>
                         </div>
-                        
                     </div><br />
                     <div>
-                            
-                                <input name="txtEmail" type="email" class="form-control" placeholder="Email" required>
-                        </div><br />
+                        <input name="txtEmail" type="email" class="form-control" placeholder="Email" required>
+                    </div><br />
                     <div>
-                        <textarea name="txtMessage" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                        <textarea name="txtMessage" class="form-control" rows="4" placeholder="Your Message"
+                            required></textarea>
                     </div>
                 </div><br />
                 <button type="submit" id="btn2" class="btn" name="btnSubmit"><i class="fas fa-sign-in-alt"
@@ -117,17 +106,26 @@ window.location.href = "contact.php";
 <script>
 // Initialize and add the map
 function initMap() {
-  // The location of shop
-  var shop = {lat: 6.901066, lng: 79.919728};
-  // The map, centered at shop
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 13, center: shop});
-  // The marker, positioned at shop
-  var marker = new google.maps.Marker({position: shop, map: map});
+    // The location of shop
+    var shop = {
+        lat: 6.901066,
+        lng: 79.919728
+    };
+    // The map, centered at shop
+    var map = new google.maps.Map(
+        document.getElementById('map'), {
+            zoom: 13,
+            center: shop
+        });
+    // The marker, positioned at shop
+    var marker = new google.maps.Marker({
+        position: shop,
+        map: map
+    });
 }
-    </script>
-    <script async defer
+</script>
+<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Qz9B3NIrtXIoweI1-F9ly4Ilad2kLjI&callback=initMap">
-    </script>
+</script>
 
 <?php include('layout/footer.php') ?>

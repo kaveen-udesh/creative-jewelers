@@ -19,10 +19,6 @@
 </head>
 
 <body>
-
-
-
-
     <div class="container-fluid">
         <div class="row no-gutters" style="background-color:#f2f2f2;">
             <div class="col" style="margin-left:20px;">

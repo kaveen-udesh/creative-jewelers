@@ -22,11 +22,11 @@ if(isset($_POST['btnLogin'])){
         
         $_SESSION["email"] = $email;
 		echo '<script type="text/javascript">alert("You are Login Successfully")</script>';
-	?>
-<script type="text/javascript">
-window.location.href = "index.php";
-</script>
-<?php
+        ?>
+        <script type="text/javascript">
+        window.location.href = "index.php";
+        </script>
+        <?php
 	}else{ 
         $msg = "<div class='alert alert-danger' role=alert>
                     Invalid Email or Password
@@ -34,12 +34,9 @@ window.location.href = "index.php";
     }
 }
 
-
-
 ?>
 
 <div style="padding-top:76px;" align="center" ;>
-
     <div class="container" style="padding-top: 50px; padding-bottom: 80px;">
         <div class="row">
             <div class="col">
@@ -59,11 +56,9 @@ window.location.href = "index.php";
                 </form><br />
                 <p>Don't have an Account... <a style="color:#00dda8;" href="register.php">Register now!</a></p>
                 <?php echo $msg; ?>
-
             </div>
         </div>
     </div>
-
 </div>
 
 <?php include('layout/footer.php') ?>

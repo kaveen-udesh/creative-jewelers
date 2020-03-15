@@ -19,7 +19,7 @@ $id="";
     </div>
     <br/>
 
-    <?php
+<?php
 
 //------------------- View All Products ------------------------
 
@@ -52,9 +52,7 @@ $id="";
                 }
                 
                 echo " <tr height=40px; style=text-align:center;background-color:$crl;>"?>
-
                     <td style="padding:10px;"><image src="../assets/images/<?php echo $row[7]; ?>" width="70px" height="auto"/></td>
-
                     <?php
                     echo"<td>"."  ".$row[0]."</td>
                     <td>"."  ".$row[1]."</td>
@@ -66,8 +64,7 @@ $id="";
                     <td>"."  ".$row[8]."%</td>
                     <td>"."  Rs.".$row[9]."</td>
 
-                </tr>";
-                
+                </tr>";  
 			$r++;
 		}
         echo "</table>";

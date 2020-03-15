@@ -120,6 +120,14 @@ body {
   font-size: 14px;
 }
 
+.link{
+  color:#00dda8;
+}
+
+.link:hover{
+  color:white;
+}
+
 .container-fluid {
   padding: 0px;
 }

@@ -18,7 +18,7 @@
   </head>
   <body style="background-color:rgba(0, 0, 0, 0.9);">
 
-  <?php
+<?php
 
 $server = "localhost";
 $user = "root";
@@ -51,12 +51,9 @@ window.location.href = "dashboard.php";
     }
 }
 
-
-
 ?>	
 
 <div style="padding-top:76px;" align="center" ;>
-
     <div class="container" style="padding-top: 30px; padding-bottom: 30px; width:700px;">
         <div class="row">
             <div class="col-sm">
@@ -77,7 +74,6 @@ window.location.href = "dashboard.php";
             </div>
         </div>
     </div>
-
 </div>
 
 <script>

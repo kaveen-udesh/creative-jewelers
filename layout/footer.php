@@ -1,42 +1,39 @@
-<div id="footer" data-animate="fadeInUp">
-    <div class="row no-gutters">
-        <div class="col-4">
-            <a href="index.php"><img id="logo" src="assets/images/logo.png" alt="Creative Jewellers Logo" width="180"
-                    height="auto" /></a>
-        </div>
-        <div class="col-4">
-            <address>
-                <p>Creative Jewelers</p>
-                <p>Battaramulla,</p>
-                <p>Colombo, Sri Lanka,</p>
-            </address>
-            <p>+94 547 475 475 / +94 578 475 475</p>
-            <p>info@creativejewelers.lk</p>
-        </div>
-        <div class="col-4">
-            <!-- <img src="assets/images/footertime.png" alt="timelogo"> -->
-            <br /><br /><br /><br /><br />
-            <p>Open Hours</p>
-            <p>9.00 AM - 9.00 PM</p>
-        </div>
-    </div>
-
-    <hr color="#CCCCCC" />
-
-    <div class="container">
-        <div class="row">
-            <div class="col" style="text-align:left;">
-                <p>Copyright © 2020 Creative Jewelers (pvt) Ltd. All rights reserved.</p>
+    <div id="footer">
+        <div class="row no-gutters">
+            <div class="col-4">
+                <a href="index.php"><img id="logo" src="assets/images/logo.png" alt="Creative Jewellers Logo" width="180"
+                        height="auto" /></a>
             </div>
-            <div class="col" style="text-align:right;">
-                <p>Developed by <a style="color:#00dda8;" href="#">Kaveen Udesh</a></p>
+            <div class="col-4">
+                <address>
+                    <p>Creative Jewelers</p>
+                    <p>Battaramulla,</p>
+                    <p>Colombo, Sri Lanka,</p>
+                </address>
+                <p>+94 547 475 475 / +94 578 475 475</p>
+                <p>info@creativejewelers.lk</p>
+            </div>
+            <div class="col-4">
+                <h6>Product Categories</h6>
+                    <p><a class="link" href="jewellery.php?page=ladies_jewellery">Ladies Jewellery</a></p>
+                    <p><a class="link" href="jewellery.php?page=gens_jewellery">Gents Jewellery</a></p>
+                    <p><a class="link" href="jewellery.php?page=kids_jewellery">Kids Jewellery</a></p>
             </div>
         </div>
+
+        <hr color="#CCCCCC" />
+
+        <div class="container">
+            <div class="row">
+                <div class="col" style="text-align:left;">
+                    <p>Copyright © 2020 Creative Jewelers (pvt) Ltd. All rights reserved.</p>
+                </div>
+                <div class="col" style="text-align:right;">
+                    <p>Developed by <a class="link" href="#">Kaveen Udesh</a></p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-
-
 
 </div>
 

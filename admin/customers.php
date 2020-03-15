@@ -5,8 +5,10 @@ $user = "root";
 $pass ="";
 $database = "creative_jewelers_kaveen";
 
+// Create Connection
+
 $con = mysqli_connect($server,$user,$pass,$database);
-//-------------- Connection--------
+
 $sql="";
 $msg1="";
 $email="";
@@ -31,7 +33,6 @@ if(isset($_POST['btn1Delete'])){
 }else{
     $msg1="<div style=color:red;><b>Error :".mysqli_connect_error()."</b></div>";
 }
-
 
 ?>
 

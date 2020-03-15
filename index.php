@@ -39,7 +39,6 @@
         </a>
     </div>
 
-
     <div class="container" style="padding-top: 80px; padding-bottom: 80px;">
         <div class="row">
             <div class="col">

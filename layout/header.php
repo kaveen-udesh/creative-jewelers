@@ -31,14 +31,16 @@ session_start();
            
            $count = count($_SESSION['cart']);
 
-           $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 'weight'=>$_POST['txtWeight'], 'sale_price'=>$_POST['txtSalePrice'], 'qty'=>$_POST['txtQty']);
+           $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 
+           'weight'=>$_POST['txtWeight'], 'sale_price'=>$_POST['txtSalePrice'], 'qty'=>$_POST['txtQty']);
            
            array_push($_SESSION['cart'], $pro_Array);
        }	 
     }
     else{
                 
-        $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 'weight'=>$_POST['txtWeight'], 'sale_price'=>$_POST['txtSalePrice'], 'qty'=>$_POST['txtQty']);
+        $pro_Array =array('id'=>$_GET['id'],'image'=>$_POST['image'], 'name'=>$_POST['txtName'], 'material'=>$_POST['txtMaterial'], 
+        'weight'=>$_POST['txtWeight'], 'sale_price'=>$_POST['txtSalePrice'], 'qty'=>$_POST['txtQty']);
            
         $_SESSION['cart'] = array();
          array_push($_SESSION['cart'], $pro_Array);

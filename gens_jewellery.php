@@ -11,7 +11,6 @@ $sql="";
 
 ?>
 
-
 <div class="container-fluid">
     <div class="row no-gutters">
         <div class="col-2" style="background-color:#f2f2f2; padding-top:50px;">
@@ -38,7 +37,6 @@ $sql="";
                             <h1>GENTS JEWELLERY</h1>
                             <h3>BRACELETS</h3>
                         </div>
-
                         <?php
                             $sql = "SELECT * FROM products WHERE category='Gens' AND sub_category='Bracelets'";
                             $result = mysqli_query($con,$sql);
@@ -88,7 +86,6 @@ $sql="";
                                         </form>
                                     </div>
                                     <?php
-
                                 }
                                 echo "</div>";
                                 echo "</div>";

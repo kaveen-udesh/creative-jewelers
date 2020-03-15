@@ -24,16 +24,17 @@ if(isset($_POST['btnRegister'])){
     $birthday = $_POST['txtBirthday'];
     $email = $_POST['txtEmail'];
     $pass = $_POST['txtPassword'];
-        $sql = "INSERT INTO users (f_name, l_name, address, city, zip_code, country, birthday, email, password,user_type) VALUES ('".$fname."','".$lname."','".$address."','".$city."',".$zip.",'".$country."','".$birthday."','".$email."','".$pass."','Customer')";
+        $sql = "INSERT INTO users (f_name, l_name, address, city, zip_code, country, birthday, email, password,user_type) VALUES 
+        ('".$fname."','".$lname."','".$address."','".$city."',".$zip.",'".$country."','".$birthday."','".$email."','".$pass."','Customer')";
         
         if(mysqli_query($con,$sql)){
             $_SESSION["email"] = $email;
             echo '<script type="text/javascript">alert("You are now Registered Member!\nWelcome to the Creative Jewelers")</script>';
             ?>
-<script type="text/javascript">
-window.location.href = "index.php";
-</script>
-<?php
+            <script type="text/javascript">
+            window.location.href = "index.php";
+            </script>
+            <?php
         }
         else{
             $msg = "<div style=color:red;><b>Error :".mysqli_error($con)."<b></div>";
@@ -45,10 +46,8 @@ window.location.href = "index.php";
 <div style="padding-top:76px;">
     <div class="container" style="padding-top: 30px; padding-bottom: 80px;">
         <div class="row">
-
             <div class="col" style="margin:30px;" align="left">
                 <h1 style="color:#00dda8; padding-bottom: 30px; text-align:center;"><b>USER REGISTRATIONS</b></h1>
-
                 <form class="validation" novalidate action="register.php" method="post">
                     <div class="row">
                         <div class="form-group col">
@@ -97,17 +96,16 @@ window.location.href = "index.php";
                     </div>
                 </form>
                 <?php echo $msg; ?>
-
             </div>
             <div class="col" style="margin-left:50px; margin-top:40px;">
                 <h4>Not our registered customer yet?</h4>
-                <p align="justify">With registration with us new Jewelleries & Accessories, fantastic discounts and much more opens to
-                    you! The whole process will not take you more than a minute!</p><br/>
+                <p align="justify">With registration with us new Jewelleries & Accessories, fantastic discounts and much
+                    more opens to
+                    you! The whole process will not take you more than a minute!</p><br />
                 <img src="assets/images/img5.png" />
             </div>
         </div>
     </div>
-
 </div>
 
 <?php include('layout/footer.php') ?>

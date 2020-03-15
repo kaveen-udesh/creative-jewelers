@@ -24,16 +24,13 @@ if(isset($_POST['btn2Delete'])){
             $msg2="<div style=color:red;><b>Error :".mysqli_error($con)."</b></div>";
         }
 }
-
-
-
 ?>
 
 <div align="center" class="container" style="padding-top:50px;">
     <div class="alert alert-info" role="alert">
         <h1>Customers Inquiries</h1>
     </div>
-    <br/>
+    <br />
 
     <?php
 
@@ -63,21 +60,22 @@ if(isset($_POST['btn2Delete'])){
                 }
                 echo "<form method=post>";
                 echo " <tr height=40px; style=text-align:center;background-color:$crl;>" ?>
-            
-                    <input type='hidden' name='txtID' value="<?php echo $row[0];?>" />
-                    <?php
+
+    <input type='hidden' name='txtID' value="<?php echo $row[0];?>" />
+    <?php
 
                     echo"<td>"."  ".$row[1]."</td>
                     <td>"."  ".$row[2]."</td>
                     <td>"."  ".$row[3]."</td>
                     <td>"."  ".$row[4]."</td>
                     <td>"."  ".$row[5]."</td>" ?>
-                    <td style="padding:20px;">
-                        <button type="submit" class="btn btn-info" title="Reply" name="btnReply"><i class="fas fa-reply"></i></button>
-                        <button type="submit" class="btn btn-danger" title="Delete Inquiry" name="btn2Delete"><i class="fas fa-trash-alt"></i></button>
-                    </td>
+    <td style="padding:20px;">
+        <button type="submit" class="btn btn-info" title="Reply" name="btnReply"><i class="fas fa-reply"></i></button>
+        <button type="submit" class="btn btn-danger" title="Delete Inquiry" name="btn2Delete"><i
+                class="fas fa-trash-alt"></i></button>
+    </td>
 
-                <?php
+    <?php
                 "</tr>";
                 echo "</form>";
 			$r++;
@@ -91,11 +89,11 @@ if(isset($_POST['btn2Delete'])){
 		echo "<div style=color:red;><b>Not Found</b></div>";
 	}
     ?>
-
-    
 </div>
 
 <?php
+
+//------------ PHP Mailer -----------------
 
 require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
@@ -130,7 +128,6 @@ if(isset($_POST['btnSend'])){
 	$subject = $_POST['txtSubject'];
 	$msg = $_POST['txtMsg'];
 
-	
 	//Recipients
     $mail->setFrom('creative.jewellers10@gmail.com', 'Creative Jewelers');
     $mail->addAddress($to);     								// Add a recipient
@@ -149,15 +146,11 @@ if(isset($_POST['btnSend'])){
     echo 'Message has been sent';
     echo "</div>";
 	
-	
 }catch(Exception $ex){
 	echo "Error : " .$mail->ErrorInfo;
 }
 }
 
-?>
-
-<?php
 if(isset($_POST['btnReply'])){
     $id = $_POST['txtID'];
     $sql = "SELECT * FROM inquiries WHERE id=".$id."";
@@ -166,40 +159,35 @@ if(isset($_POST['btnReply'])){
             if($row = mysqli_fetch_row($result)){
 
     ?>
-    <div class="container" style="border:solid 1px #CCCCCC; border-radius:20px; margin-bottom:30px;">
-    <div  align="center" style="margin-top:30px; margin-bottom:20px;">
+<div class="container" style="border:solid 1px #CCCCCC; border-radius:20px; margin-bottom:30px;">
+    <div align="center" style="margin-top:30px; margin-bottom:20px;">
+        <h2 style="padding-bottom:20px;">Reply Message</h2>
+        <form action="dashboard.php?page=inquiries" method="post">
+            <table width="600" height="300">
+                <tr>
+                    <td>To</td>
+                    <td><input type="text" class="form-control" name="txtTo" value="<?php echo $row[2];?>" /></td>
+                </tr>
+                <tr>
+                    <td>Subject</td>
+                    <td><input type="text" class="form-control" name="txtSubject" /></td>
+                </tr>
+                <tr>
+                    <td>Message</td>
+                    <td><textarea rows="5" class="form-control" name="txtMsg"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right"><input class="btn btn-success" type="submit" name="btnSend"
+                            value="Send" /></td>
+                </tr>
 
-    <h2 style="padding-bottom:20px;">Reply Message</h2>
-
-<form action="dashboard.php?page=inquiries" method="post">
-<table width="600" height="300">
-  <tr>
-    <td>To</td>
-    <td><input type="text" class="form-control" name="txtTo" value="<?php echo $row[2];?>"/></td>
-  </tr>
-  <tr>
-    <td>Subject</td>
-    <td><input type="text" class="form-control" name="txtSubject"/></td>
-  </tr>
-  <tr>
-    <td>Message</td>
-    <td><textarea rows="5" class="form-control" name="txtMsg"></textarea></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="right"><input class="btn btn-success" type="submit" name="btnSend" value="Send"/></td>
-  </tr>
-  
-</table>
-</form>
+            </table>
+        </form>
+    </div>
 </div>
-</div>
-
 
 <?php
-            }
+        }
+    }
 }
-}
-
 ?>
-
-

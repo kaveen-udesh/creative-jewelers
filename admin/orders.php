@@ -57,10 +57,8 @@ $email="";
                     <td>"."  ".$row['payment_method']."</td>
                     <td>"."  ".$row['c_email']."</td>
                     <td>"."  ".$row['date']."</td>";
-?>
-
+                ?>
                     <td style="padding:20px;"><button type="submit" class="btn btn-info" title="View Order" name="btnView"><i class="fas fa-eye"></i></button></td>
-
                 <?php
                 "</tr>";
                 echo "</form>";
@@ -85,7 +83,7 @@ if(isset($_POST['btnView'])){
         if(mysqli_num_rows($result)>0){
             if($row = mysqli_fetch_assoc($result)){
 
-?>
+            ?>
             <div class="container" style="border:solid 1px #CCCCCC; border-radius:20px; margin-bottom:30px;">
                 <div style="margin-top:30px;">
                             <h3>Creative Jewellers(Pvt) Ltd.</h3>
@@ -102,7 +100,6 @@ if(isset($_POST['btnView'])){
                                         Email: creative.jewellers10@gmail.com<br/>
                                         <address>
                                     </div>
-
                                     <div class="col" align="right">
                                         <b>Order ID: <?php echo $row['o_id']; ?></b><br/>
                                         <b>Order Date: <?php echo $row['date']; ?></b>
@@ -153,15 +150,10 @@ if(isset($_POST['btnView'])){
                             <?php
                             }
                             ?>
-    
                         </div>
-                        
                     </div>
-
-<?php
-
+        <?php
         }
-    }
-                
+    }             
 }
 ?>

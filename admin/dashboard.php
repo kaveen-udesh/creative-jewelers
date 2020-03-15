@@ -46,13 +46,12 @@ $con = mysqli_connect($server,$user,$pass,$database);
             include($pageName.'.php');
         }
         else{
-            include('manage_products.php');
+            include('home.php');
         }
         ?>
         </div>
     </div>
 </div>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
