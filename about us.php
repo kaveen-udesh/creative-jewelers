@@ -15,10 +15,7 @@
             <h1 style="color:#00dda8; padding-top: 130px; padding-bottom: 30px;"><b>Creative Jewelers</b></h1>
             <p><b>The FIRST jeweller in the world to be crowned with the prestigious ISO 9001 : 2015
                     International Certification.</b></p>
-            <p>Creative Jewelers has proven its reliability through 5 decades of serving you. Creative Jewelers
-                has proven its commitment to giving you not only a piece of jewellery but a beautiful experience
-                to cherish throughout your life. Creative Jewelers stands by its lifetime’s guarantee by being
-                with you forever.Best Jeweller in Sri Lanka.</p>
+            <p>For over five decades, Creative Jewelers has built a reputation for reliability. We are committed to offering you not just a piece of jewelry, but a memorable experience to cherish for a lifetime. With our lifetime guarantee, Creative Jewelers will be with you always. The best jeweler in Sri Lanka.</p>
         </div>
     </div>
 </div>
